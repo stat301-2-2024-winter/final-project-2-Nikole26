@@ -43,11 +43,13 @@ The research objective is to develop a model that predicts the likelihood of sma
 
 This is a classification problem. The goal is to classify loan applications into two categories: "Approved" and "Rejected". Also, the dependent variable is `mis_status`. This variable indicates the loan status, which includes "Charged Off" (CHGOFF) or "Paid in Full" (PIF).
 
+Having a prediction model is useful because for financial institutions or agencies like the U.S. Small Business Administration (SBA), predicting loan status is a key aspect of risk assessment. Identifying loans at risk of default allows for proactive risk management and mitigation strategies.
+
 This research question resonates with my strong interest in investigating the dynamics between banks and startups. By focusing on the interactions between financial institutions and emerging enterprises, I aim to understand the challenges faced by startups in securing loans, thereby contributing to my broader goal of enhancing my knowledge in business dynamics and fostering the growth of entrepreneurial ventures. This research aligns perfectly with my interests, providing a substantial and meaningful avenue for me to gain insights into the intricate relationships between banks and startups.
 
 ## Data source
 
-This dataset^[Toktogaraev, M. (2022). "Should This Loan be Approved or Denied? [Data set]. Kaggle. [https://www.kaggle.com/datasets/stefanoleone992/tripadvisor-european-restaurants/code](https://www.kaggle.com/datasets/stefanoleone992/tripadvisor-european-restaurants/code)] was obtained from the U.S. Small Business Administration (SBA) and is publicly available on Kaggle, a platform dedicated to data science.
+This dataset[^1] was obtained from the U.S. Small Business Administration (SBA) and is publicly available on Kaggle, a platform dedicated to data science.
 
 ## Data quality check
 
@@ -71,8 +73,37 @@ In this clean dataset, the missingness issue is fixed. Thus, there is now 160856
 
 ## Target variable analysis
 
+```{r}
+#| label: target-variable-plot
+png::readPNG(here("plots/mis_status_plot.png")) |>
+  grid::grid.raster()
+```
 
+Figure 1 illustrates a notable imbalance in loan status within the dataset. The predominant observation is that a larger proportion of loans are classified as 'Charged Off' compared to those categorized as 'Paid in Full' . To handle the imbalance issue, I think of using techniques such as oversampling the minority class, undersampling the majority class, or ensemble methods that are robust to imbalanced datasets like Random Forest.
 
 ## Misc
 
-Blah Blah
+Considering that fitting/training the models may take more time than expected, I have organized my project in 7 phases that can be conducted over the coming week. My main goal is to have finished half of this phases by the middle of the month. 
+
+1. Data Preprocessing: (Completed)
+Clean and preprocess the dataset, handling missing values, encoding categorical variables. 
+
+2. Exploratory Data Analysis: (On process)
+Conduct a comprehensive exploratory data analysis to gain insights into the characteristics of the dataset. Visualize key features, distributions, and relationships to inform feature selection and engineering.
+
+3. Model Selection and Setup:
+Choose suitable classification models for the project, considering the imbalance in loan approval statuses. Set up the models, including defining features and the target variable `mis_status`, and split the dataset into training and testing sets.
+
+4. Model Training:
+Train the selected models on the training dataset, incorporating techniques to address class imbalance if necessary. 
+
+5. Model Evaluation:
+Evaluate the models using the testing dataset, assessing metrics such as accuracy, precision, recall. Make adjustments if needed to improve model performance.
+
+6. Interpretation and Insights:
+Interpret the results and derive meaningful insights into the factors influencing loan application approval. Consider the implications for both banks and start-ups in the context of the `mis_status` variable.
+
+7. Documentation and Reporting: 
+Generate a comprehensive report summarizing the research process and outcomes and an executive summary. 
+
+[^1]: Toktogaraev, M. (2022). "Should This Loan be Approved or Denied? [Data set]. Kaggle. [https://www.kaggle.com/datasets/stefanoleone992/tripadvisor-european-restaurants/code](https://www.kaggle.com/datasets/stefanoleone992/tripadvisor-european-restaurants/code)

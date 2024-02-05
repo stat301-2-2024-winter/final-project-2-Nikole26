@@ -1,4 +1,6 @@
-# Data cl
+# Data cleaning
+# Deal with missing values
+
 library(tidyverse)
 library(here)
 sba_original_data <- read_csv(here("data/SBAnational.csv"))
@@ -9,3 +11,4 @@ sba <- sba_original_data |>
   drop_na() 
 
 saveRDS(sba, here("data/sba.rds"))
+
