@@ -1,0 +1,78 @@
+---
+title: "Progress Memo 1"
+subtitle: |
+  | Final Project 
+  | Data Science 2 with R (STAT 301-2)
+author: "Nikole Montero Cervantes"
+date: today
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    
+execute:
+  echo: false
+  warning: false
+
+from: markdown+emoji 
+reference-location: margin
+citation-location: margin
+---
+
+::: {.callout-tip icon=false}
+
+## Github Repo Link
+
+[https://github.com/stat301-2-2024-winter/final-project-2-Nikole26.git](https://github.com/stat301-2-2024-winter/final-project-2-Nikole26.git)
+
+:::
+
+## Loading packages and data
+
+```{r}
+#| label: loading-packages-and-data
+#| echo: true
+library(tidyverse)
+library(here)
+sba_original_data <- read_csv(here("data/SBAnational.csv"))
+sba <- read_rds(here("data/sba.rds"))
+```
+## Prediction Problem
+The research objective is to develop a model that predicts the likelihood of small businesses or start-ups having their loan applications approved by the U.S. Small Business Administration (SBA).
+
+This is a classification problem. The goal is to classify loan applications into two categories: "Approved" and "Rejected". Also, the dependent variable is `mis_status`. This variable indicates the loan status, which includes "Charged Off" (CHGOFF) or "Paid in Full" (PIF).
+
+This research question resonates with my strong interest in investigating the dynamics between banks and startups. By focusing on the interactions between financial institutions and emerging enterprises, I aim to understand the challenges faced by startups in securing loans, thereby contributing to my broader goal of enhancing my knowledge in business dynamics and fostering the growth of entrepreneurial ventures. This research aligns perfectly with my interests, providing a substantial and meaningful avenue for me to gain insights into the intricate relationships between banks and startups.
+
+## Data source
+
+This dataset^[Toktogaraev, M. (2022). "Should This Loan be Approved or Denied? [Data set]. Kaggle. [https://www.kaggle.com/datasets/stefanoleone992/tripadvisor-european-restaurants/code](https://www.kaggle.com/datasets/stefanoleone992/tripadvisor-european-restaurants/code)] was obtained from the U.S. Small Business Administration (SBA) and is publicly available on Kaggle, a platform dedicated to data science.
+
+## Data quality check
+
+```{r}
+#| label: checking-original-dataset
+sba_original_data |>
+  skimr::skim_without_charts()
+```
+<brp>
+
+In the original dataset we have 899164 observations and 27 variables. There are 16 categorical variables and 11 numerical ones. It is also seen that there is a missingness issue in most of the variables. The variable with the highest missing values is `chg_off_date`. Thus, in order to resolve that, I decided to clean my dataset by eliminating all rows with missing values. 
+
+```{r}
+#| label: checkin-clean-dataset
+sba |>
+  skimr::skim_without_charts()
+```
+<brp>
+
+In this clean dataset, the missingness issue is fixed. Thus, there is now 160856 observations and 27 variables. There are 16 categorical variables and 11 numerical ones. 
+
+## Target variable analysis
+
+
+
+## Misc
+
+Blah Blah
