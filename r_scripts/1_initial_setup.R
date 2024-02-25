@@ -25,17 +25,33 @@ p1 <-
        x = "Loan Status",
        y = "Count")
 
-# quick data quality ----
-
-# initial split ----
+# quick quality check----
 # set seed
+sba|>
+  naniar::miss_var_summary()
+
+#inital split of the data
 set.seed(3012)
+sba_split <- 
+  sba |>
+  initial_split(prop = 0.75, strata = mis_status)
+
+sba_train <- sba_split |> training() 
+sba_test <- sba_split |> testing()
 
 # folding data (resamples) ----
-# set seed 
-set.seed(605)
+# set seed
+set.seed(6051)
+sba_folds <-
+  sba_train |>
+  vfold_cv(v = 10, repeats = 5, strata = mis_status)
 
-# set up controls for fitting resamples ----
+# set up controls for fitting resamples----
+keep_wflow <- control_resamples(save_workflow = TRUE)
 
-
-# write out split, train, test and folds ----
+# write out split, train, test and folds----
+save(sba_split, file = here("data_splits/sba_split.rda"))
+save(sba_train, file = here("data_splits/sba_train.rda"))
+save(sba_test, file = here("data_splits/sba_test.rda"))
+save(sba_folds, file = here("data_splits/sba_folds.rda"))
+save(keep_wflow, file = here("results/keep_wflow.rda"))
