@@ -1,4 +1,4 @@
-# L07 Baseline Models: Exercise 1 ----
+# Final Project: Set up
 # Initial data checks & data splitting
 
 # Random process in script, seed set right before it
@@ -13,10 +13,17 @@ library(patchwork)
 tidymodels_prefer()
 
 # load data ----
-
+sba <- readRDS(here("data/sba.rds"))
 
 # inspecting target variable
+skimr::skim_without_charts(sba$mis_status)
 
+p1 <- 
+  ggplot(sba, aes(x = mis_status)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Loan Status",
+       x = "Loan Status",
+       y = "Count")
 
 # quick data quality ----
 
