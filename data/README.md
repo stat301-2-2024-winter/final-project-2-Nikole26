@@ -1,6 +1,6 @@
 ## Datasets
 `SBAnational.csv`: It's the original data set. 
-`sba.rds`: It's the clean dataset. 
+`sba.rds`: It's the clean and tidy dataset. 
 
 ## Codebook
 | Variable Name       | Description                                                 |
