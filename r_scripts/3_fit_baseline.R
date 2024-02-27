@@ -6,6 +6,7 @@ library(tidyverse)
 library(tidymodels)
 library(here)
 library(parallel)
+library(doParallel)
 num.cores <- detectCores(logical = TRUE)
 registerDoParallel(cores = num.cores)
 
