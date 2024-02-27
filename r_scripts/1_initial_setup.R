@@ -26,11 +26,11 @@ p1 <-
        y = "Count")
 
 # quick quality check----
-# set seed
 sba|>
   naniar::miss_var_summary()
 
 #inital split of the data
+# set seed
 set.seed(3012)
 sba_split <- 
   sba |>

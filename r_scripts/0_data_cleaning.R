@@ -11,45 +11,8 @@ library(lubridate)
 sba_original_data <- read_csv(here("data/SBAnational.csv")) |>
   janitor::clean_names()
 
-# Chossing how to deal with NA values----
-ggplot(sba_original_data, aes(x = mis_status)) +
-  geom_bar(fill = "skyblue", color = "black") +
-  labs(title = "Distribution of Loan Status",
-       x = "Loan Status",
-       y = "Count")
-
-## Dropping NA
-sba_dropping <- sba_original_data |>
-  drop_na()
-
-ggplot(sba_dropping, aes(x = mis_status)) +
-  geom_bar(fill = "skyblue", color = "black") +
-  labs(title = "Distribution of Loan Status",
-       x = "Loan Status",
-       y = "Count")
-
-##Imputting values
-sba_imputed <- sba_original_data |>
-  mutate_if(is.numeric, ~ifelse(is.na(.), mean(., na.rm = TRUE), .))
-
-# Mode imputation for categorical variables
-mode_impute <- function(x) {
-  mode_val <- names(sort(table(x), decreasing = TRUE))[1]
-  x[is.na(x)] <- mode_val
-  x
-}
-
-sba_imputed <- sba_original_data |>
-  mutate_if(is.character, mode_impute)
-
-ggplot(sba_imputed, aes(x = mis_status)) +
-  geom_bar(fill = "skyblue", color = "black") +
-  labs(title = "Distribution of Loan Status",
-       x = "Loan Status",
-       y = "Count")
-
-# Tidying other variables----
-sba_tidy <- sba_imputed |>
+# Tidying all variables----
+sba_tidy <- sba_original_data |>
   mutate(
     chg_off_prin_gr = as.numeric(gsub("[^0-9.]", "", chg_off_prin_gr)),
     gr_appv = as.numeric(gsub("[^0-9.]", "", gr_appv)),
@@ -62,6 +25,35 @@ sba_tidy <- sba_imputed |>
     mis_status = gsub(" ", "", mis_status)
   )
 
+# Chossing how to deal with NA values----
+ggplot(sba_tidy, aes(x = mis_status)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Loan Status",
+       x = "Loan Status",
+       y = "Count")
+
+## Dropping NA
+#sba_cleaned <- sba_original_data |>
+#  drop_na()
+
+
+## Downsample
+group0 <- sba_tidy |>
+  filter(mis_status == "CHGOFF") |>
+  slice_sample(n = 3000)
+
+group1 <- sba_tidy |>
+  filter(mis_status == "PIF") |>
+  slice_sample(n = 3000)
+
+sba_downsampled <- bind_rows(group0, group1)
+
+ggplot(sba_downsampled, aes(x = mis_status)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(title = "Distribution of Loan Status",
+       x = "Loan Status",
+       y = "Count")
+
 # Saving clean dataset
-saveRDS(sba_tidy, here("data/sba.rds"))
+saveRDS(sba_downsampled, here("data/sba.rds"))
 

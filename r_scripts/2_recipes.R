@@ -21,14 +21,6 @@ sba_recipe_1 <-
   step_zv(all_predictors()) |>
   step_normalize(all_numeric_predictors()) 
 
-sba_recipe_2 <- 
-  recipe(mis_status ~ ., data = sba_train) |>
-  step_rm(name, city, state, bank, bank_state, approval_date, chg_off_date, disbursement_date) |>
-  step_dummy(all_nominal_predictors(), one_hot = TRUE) |>
-  step_zv(all_predictors()) |>
-  step_normalize(all_numeric_predictors()) 
-step_oversample(mis_status) # will be use for the advanced model
-
 # check recipe
 sba_recipe_1 |>
   prep() |>
