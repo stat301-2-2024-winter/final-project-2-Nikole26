@@ -19,7 +19,10 @@ sba_recipe_1 <-
   step_rm(loan_nr_chk_dgt, name, city, state, bank, bank_state, approval_date, chg_off_date, disbursement_date) |>
   step_dummy(all_nominal_predictors(), one_hot = TRUE) |>
   step_zv(all_predictors()) |>
-  step_normalize(all_numeric_predictors()) 
+  step_impute_mode(all_nominal_predictors()) |>  # Impute missing values in nominal predictors using mode
+  step_impute_mean(all_numeric_predictors())
+  
+  #step_normalize(all_numeric_predictors()) 
 
 # check recipe
 sba_recipe_1 |>

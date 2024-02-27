@@ -17,26 +17,7 @@ load(here("recipes/sba_recipe_1.rda"))
 load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
-# Null Model (the duh baseline) ----
-null_spec <- null_model() |> 
-  set_engine("parsnip")|>
-  set_mode("classification") 
-
-null_wflow <- workflow()|>
-  add_model(null_spec)|>
-  add_recipe(sba_recipe_1)
-
-null_fit <- null_wflow |> 
-  fit_resamples(
-    resamples = sba_folds, 
-    control = keep_wflow
-  )
-
-# write out results (fitted/trained workflow)
-save(null_fit, file = "results/null_fit.rda")
-
-
-# Binary Logistic Regression ----
+# Baseline Model: Binary Logistic Regression ----
 logistic_mod <- logistic_reg() |> 
   set_engine("glm") |> 
   set_mode("classification")

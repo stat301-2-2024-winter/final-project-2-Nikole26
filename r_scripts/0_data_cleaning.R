@@ -7,6 +7,7 @@ library(readr)
 library(tidyr)
 library(dplyr)
 library(lubridate)
+library(forcats)
 
 sba_original_data <- read_csv(here("data/SBAnational.csv")) |>
   janitor::clean_names()
@@ -22,7 +23,9 @@ sba_tidy <- sba_original_data |>
     disbursement_date = dmy(disbursement_date),
     chg_off_date = dmy(chg_off_date),
     approval_date = dmy(approval_date),
-    mis_status = gsub(" ", "", mis_status)
+    mis_status = factor(gsub(" ", "", mis_status)),
+    rev_line_cr = factor(rev_line_cr, levels = c("Y", "N")),
+    low_doc = factor(low_doc, levels = c("Y", "N"))
   )
 
 # Chossing how to deal with NA values----
@@ -40,11 +43,11 @@ ggplot(sba_tidy, aes(x = mis_status)) +
 ## Downsample
 group0 <- sba_tidy |>
   filter(mis_status == "CHGOFF") |>
-  slice_sample(n = 3000)
+  slice_sample(n = 15000)
 
 group1 <- sba_tidy |>
   filter(mis_status == "PIF") |>
-  slice_sample(n = 3000)
+  slice_sample(n = 15000)
 
 sba_downsampled <- bind_rows(group0, group1)
 
