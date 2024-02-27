@@ -21,3 +21,6 @@ nb_metrics <- nb_fit |>
 # Create table
 table_metrics <- bind_rows(lg_metrics, nb_metrics)
 
+# Saving table
+save(table_metrics, file = here("results/table_metrics.rda"))
+

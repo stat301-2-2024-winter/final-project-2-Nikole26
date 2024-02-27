@@ -1,0 +1,70 @@
+---
+title: "Progress Memo 2"
+subtitle: |
+  | Final Project 
+  | Data Science 2 with R (STAT 301-2)
+author: "Nikole Montero Cervantes"
+date: today
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    
+execute:
+  echo: false
+  warning: false
+
+from: markdown+emoji 
+reference-location: margin
+citation-location: margin
+---
+
+::: {.callout-tip icon=false}
+
+## Github Repo Link
+
+[https://github.com/stat301-2-2024-winter/final-project-2-Nikole26.git](https://github.com/stat301-2-2024-winter/final-project-2-Nikole26.git)
+
+:::
+
+```{r}
+#| label: loading-packages-and-data
+#| echo: false
+library(tidyverse)
+library(here)
+```
+
+## Data source
+
+This dataset[^1] was obtained from the U.S. Small Business Administration (SBA) and is publicly available on Kaggle, a platform dedicated to data science.
+
+## Assesment Metric
+
+The assessment metric use for this final project is **accuracy**.
+
+## Current progress
+
+My analysis plan has undergone a change in the way of handling missing values. Initially, I was going to be dropping any rows containing missing values, but I decided to go for data splitting instead. Now, the dataset is divided into training and testing sets with a 75:25 proportion. This introduced an artificial balance of the binary target variable `mis_status` to address potential imbalances in the data distribution. In this way, it is ensured that models are trained on one subset of the data and evaluated on another to assess their generalization performance. 
+
+Besides, cross-validation is used as a resampling technique to further validate the models and mitigate the risk of overfitting. In this case, a stratified k-fold cross-validation with 10 folds and 5 repeats is used.
+
+Two different recipes were created for feature preprocessing, each tailored to the specific needs of different models, which so far are the binary logistic regression model and naive Bayes. These recipes include steps such as removing unnecessary variables, handling unknown values, among other steps. 
+
+At this stage, the classification models I am using are binary logistic regression and naive Bayes. I implement logistic regression using the `glm` engine and naive Bayes using the `klaR` engine. Both models are trained and evaluated using the resampled data to compare their performance.
+
+Progress has been made in setting up the analysis pipeline, including data preprocessing, model selection, and evaluation based on the assessment metric accuracy.
+
+```{r}
+load(here("results/table_metrics.rda")) 
+table_metrics|>
+  kableExtra::kable()
+```
+
+## Next Steps
+
+The next steps in my final project involve evaluating performance metrics from cross-validation to pinpoint the best-performing model among the six models used: logistic regression, naive Bayes, boosted trees, elastic net, k-nearest neighbors, and random forest. Following this, I'll fine-tune the hyperparameters of the selected models to optimize their performance further, while remaining attentive for potential issues like overfitting or underfitting.
+
+Once the best-performing model and hyperparameters are identified, I'll apply it to the training data by retraining the model using the entire dataset. My aim is to select the most accurate and reliable model for predicting my target variable, `mis_status`, while actively addressing any challenges or issues that may arise during the analysis.
+
+[^1]: Toktogaraev, M. (2022). "Should This Loan be Approved or Denied? [Data set]. Kaggle. [https://www.kaggle.com/datasets/mirbektoktogaraev/should-this-loan-be-approved-or-denied?select=Should+This+Loan+be+Approved+or+Denied+A+Large+Dataset+with+Class+Assignment+Guidelines.pdf](https://www.kaggle.com/datasets/mirbektoktogaraev/should-this-loan-be-approved-or-denied?select=Should+This+Loan+be+Approved+or+Denied+A+Large+Dataset+with+Class+Assignment+Guidelines.pdf)
