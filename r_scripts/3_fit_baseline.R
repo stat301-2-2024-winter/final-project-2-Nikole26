@@ -27,8 +27,9 @@ logistic_wflow <- workflow() |>
   add_model(logistic_mod) |> 
   add_recipe(sba_recipe_1)
 
-logistic_fit <- logistic_wflow |> 
+logistic_fit <-  
   fit_resamples(
+    logistic_wflow,
     resamples = sba_folds, 
     control = keep_wflow
   )
