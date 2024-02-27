@@ -8,3 +8,16 @@ library(tidymodels)
 library(here)
 
 # loading necessary data
+load(here("results/logistic_fit.rda"))
+load(here("results/nb_fit.rda"))
+
+# Collecting metric
+lg_metrics <- logistic_fit |>
+  collect_metrics()
+
+nb_metrics <- nb_fit |>
+  collect_metrics()
+
+# Create table
+table_metrics <- bind_rows(lg_metrics, nb_metrics)
+
