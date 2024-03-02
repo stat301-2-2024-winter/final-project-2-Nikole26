@@ -29,7 +29,7 @@ sba_recipe_baseline <-
 #step_impute_mean(all_numeric_predictors())
   
 # check recipe
-sba_recipe_1 |>
+sba_recipe_baseline_2 |>
   prep() |>
   bake(new_data = NULL) |>
   glimpse()

@@ -13,10 +13,12 @@ load(here("results/nb_fit.rda"))
 
 # Collecting metric
 lg_metrics <- logistic_fit |>
-  collect_metrics()
+  collect_metrics() |>
+  mutate(`Model` = "Binary Logistic Regression")
 
 nb_metrics <- nb_fit |>
-  collect_metrics()
+  collect_metrics() |>
+  mutate(`Model` = "Naive Bayes")
 
 # Create table
 table_metrics <- bind_rows(lg_metrics, nb_metrics)
