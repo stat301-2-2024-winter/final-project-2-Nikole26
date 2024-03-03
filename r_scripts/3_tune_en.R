@@ -40,10 +40,13 @@ elastic_workflow <- workflow() |>
   add_model(elastic_mod) |> 
   add_recipe(sba_recipe_1)
 
-# tunning workflow
-tuned_elastic_1 <- tune_grid(elastic_workflow, 
+# tunning workflowed
+# set seed 
+set.seed(7130)
+elastic_tuned_1 <- tune_grid(elastic_workflow, 
                            sba_folds,
                            grid = elastic_grid,
                            control = keep_wflow)
 
-save(tuned_elastic_1, file = here("results/en_tuned_1.rda"))
+save(elastic_tuned_1, file = here("results/en_tuned_1.rda"))
+
