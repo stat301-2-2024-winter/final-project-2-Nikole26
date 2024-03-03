@@ -30,7 +30,7 @@ knn_model <-
 knn_wflow <- 
   workflow() |>
   add_model(knn_model) |>
-  add_recipe((sba_recipe_1))
+  add_recipe(sba_recipe_1)
 
 # hyperparameter tuning values ----
 # check ranges for hyperparameters

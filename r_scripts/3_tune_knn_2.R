@@ -18,7 +18,7 @@ load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
 # load pre-processing/feature engineering/recipe
-load(here("recipes/sba_recipe_knn.rda"))
+load(here("recipes/sba_recipe_bt.rda"))
 
 # model specifications ----
 knn_model <-
@@ -30,14 +30,14 @@ knn_model <-
 knn_wflow <- 
   workflow() |>
   add_model(knn_model) |>
-  add_recipe(sba_recipe_knn)
+  add_recipe(sba_recipe_bt)
 
 # hyperparameter tuning values ----
 # check ranges for hyperparameters
 hardhat::extract_parameter_set_dials(knn_model)
 # change hyperparameter ranges
 knn_params <- parameters(knn_model) |>
-  update(neighbors = neighbors(range = c(1, 15))) 
+  update(neighbors = neighbors(range = c(1, 20))) 
 # build tuning grid
 knn_grid <- grid_regular(knn_params, levels = 5)
 
