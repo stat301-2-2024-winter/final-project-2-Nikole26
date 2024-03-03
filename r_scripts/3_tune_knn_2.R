@@ -30,23 +30,22 @@ knn_model <-
 knn_wflow <- 
   workflow() |>
   add_model(knn_model) |>
-  add_recipe((sba_recipe_knn))
+  add_recipe(sba_recipe_knn)
 
 # hyperparameter tuning values ----
 # check ranges for hyperparameters
 hardhat::extract_parameter_set_dials(knn_model)
 # change hyperparameter ranges
 knn_params <- parameters(knn_model) |>
-  update(neighbors = neighbors(range = c(1, 18))) 
+  update(neighbors = neighbors(range = c(1, 15))) 
 # build tuning grid
 knn_grid <- grid_regular(knn_params, levels = 5)
 
 # fit workflows/models ----
-set.seed(7250)
 knn_tuned_2 <- tune_grid(knn_wflow,
-                       sba_folds,
-                       grid = knn_grid,
-                       control = keep_wflow)
+                         sba_folds,
+                         grid = knn_grid,
+                         control = keep_wflow)
 
 # write out results (fitted/trained workflows) ----
 save(knn_tuned_2, file = here("results/knn_tuned_2.rda"))

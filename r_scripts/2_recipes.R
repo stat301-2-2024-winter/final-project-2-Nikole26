@@ -38,11 +38,11 @@ sba_recipe_bt <-
 sba_recipe_knn <-
   recipe(mis_status ~ ., data = sba_train) |>
   step_rm(loan_nr_chk_dgt, name, city, state, bank, bank_state, approval_date, chg_off_date, disbursement_date) |>
-  step_impute_mean(all_numeric()) |>
   step_unknown(all_nominal_predictors()) |>
-  step_zv(all_predictors()) |>
   step_dummy(all_nominal(), one_hot = TRUE) |>
-  step_normalize(all_numeric())
+  step_zv(all_predictors()) |>
+  step_normalize(all_numeric()) |>
+  step_impute_mean(all_numeric()) 
 
 #step_impute_mean(all_numeric_predictors())
   
