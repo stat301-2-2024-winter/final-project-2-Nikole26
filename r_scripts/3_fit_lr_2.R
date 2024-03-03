@@ -35,4 +35,4 @@ logistic_fit_2 <-
   )
 
 # write out results (fitted/trained workflows)
-save(logistic_fit_2, file = "results/logistic_fit_2.rda")
+save(logistic_fit_2, file = here("results/logistic_fit_2.rda"))
