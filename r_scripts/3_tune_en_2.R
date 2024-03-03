@@ -42,10 +42,10 @@ elastic_workflow <- workflow() |>
 # tunning workflowed
 # set seed 
 set.seed(7310)
-elastic_tuned_2 <- tune_grid(elastic_workflow, 
+en_tuned_2 <- tune_grid(elastic_workflow, 
                            sba_folds,
                            grid = elastic_grid,
                            control = keep_wflow)
 
-save(elastic_tuned_2, file = here("results/en_tuned_3.rda"))
+save(en_tuned_2, file = here("results/en_tuned_2.rda"))
 

@@ -45,12 +45,12 @@ bt_grid <- grid_regular(bt_params, levels = 5)
 # fit workflows/models ----
 #set seed
 set.seed(712)
-bt_tuned <- tune_grid(bt_wflow,
+bt_tuned_1 <- tune_grid(bt_wflow,
                       sba_folds,
                       grid = bt_grid,
                       control = keep_wflow)
 
 # write out results (fitted/trained workflows) ----
-save(bt_tuned, file = "results/bt_tuned.rda")
+save(bt_tuned_1, file = "results/bt_tuned_1.rda")
 
 
