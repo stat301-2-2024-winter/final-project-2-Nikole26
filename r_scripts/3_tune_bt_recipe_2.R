@@ -14,7 +14,7 @@ registerDoParallel(cores = num.cores)
 tidymodels_prefer()
 
 # loading neccesary data
-load(here("recipes/sba_recipe_bt.rda"))
+load(here("recipes/sba_recipe_2.rda"))
 load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
@@ -29,7 +29,7 @@ bt_model <- boost_tree(mode = "classification",
 bt_wflow <- 
   workflow() |>
   add_model(bt_model) |>
-  add_recipe(sba_recipe_bt)
+  add_recipe(sba_recipe_2)
 
 # hyperparameter tuning values ----
 # check ranges for hyperparameters

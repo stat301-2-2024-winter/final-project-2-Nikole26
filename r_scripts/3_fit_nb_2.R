@@ -29,7 +29,7 @@ nb_wflow <- workflow() |>
   add_model(nb_mod) |> 
   add_recipe(sba_recipe_nb_2)
 
-nb_fit <-  
+nb_fit_2 <-  
   fit_resamples(
     nb_wflow,
     resamples = sba_folds, 

@@ -18,7 +18,7 @@ load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
 # load pre-processing/feature engineering/recipe
-load(here("recipes/sba_recipe_bt.rda"))
+load(here("recipes/sba_recipe_2.rda"))
 
 # model specifications ----
 knn_model <-
@@ -30,7 +30,7 @@ knn_model <-
 knn_wflow <- 
   workflow() |>
   add_model(knn_model) |>
-  add_recipe(sba_recipe_bt)
+  add_recipe(sba_recipe_2)
 
 # hyperparameter tuning values ----
 # check ranges for hyperparameters

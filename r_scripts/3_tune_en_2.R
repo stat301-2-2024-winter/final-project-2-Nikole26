@@ -20,7 +20,7 @@ load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
 # load pre-processing/feature engineering/recipe
-load(here("recipes/sba_recipe_rf.rda"))
+load(here("recipes/sba_recipe_2.rda"))
 
 # set engine model
 elastic_mod <- 
@@ -37,7 +37,7 @@ elastic_grid <- grid_regular(elastic_params, levels = 5)
 # setting workflow 
 elastic_workflow <- workflow() |> 
   add_model(elastic_mod) |> 
-  add_recipe(sba_recipe_rf)
+  add_recipe(sba_recipe_2)
 
 # tunning workflowed
 # set seed 
@@ -47,5 +47,5 @@ elastic_tuned_2 <- tune_grid(elastic_workflow,
                            grid = elastic_grid,
                            control = keep_wflow)
 
-save(elastic_tuned_2, file = here("results/en_tuned_2.rda"))
+save(elastic_tuned_2, file = here("results/en_tuned_3.rda"))
 
