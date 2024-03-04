@@ -91,3 +91,15 @@ model_results_2 <- bind_rows(logistic_metrics_2, nb_metrics_2, bt_metrics_2, en_
 
 save(model_results_2, file = here("results/model_results_2.rda"))
 
+# Select the best hyperparameters for each model-------
+# For rf
+rf_best <- select_best(rf_tuned_2, metric = "accuracy")
+
+# For bt
+bt_best <- select_best(bt_tuned_2, metric = "accuracy")
+
+# For kknn model
+knn_best <- select_best(knn_tuned_2, metric = "accuracy")
+
+# For en model
+en_best <- select_best(en_tuned_2, metric = "accuracy")

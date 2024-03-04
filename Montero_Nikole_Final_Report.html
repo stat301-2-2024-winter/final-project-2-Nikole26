@@ -2999,10 +2999,14 @@ vertical-align: -.125em;
   <li><a href="#data-splitting" id="toc-data-splitting" class="nav-link" data-scroll-target="#data-splitting">Data Splitting</a></li>
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
   <li><a href="#recipes" id="toc-recipes" class="nav-link" data-scroll-target="#recipes">Recipes</a></li>
-  <li><a href="#resampling-technique" id="toc-resampling-technique" class="nav-link" data-scroll-target="#resampling-technique">Resampling Technique</a></li>
   <li><a href="#metric-for-model-comparison" id="toc-metric-for-model-comparison" class="nav-link" data-scroll-target="#metric-for-model-comparison">Metric for Model Comparison</a></li>
+  <li><a href="#resampling-technique" id="toc-resampling-technique" class="nav-link" data-scroll-target="#resampling-technique">Resampling Technique</a></li>
   </ul></li>
-  <li><a href="#model-building-selection" id="toc-model-building-selection" class="nav-link" data-scroll-target="#model-building-selection">Model Building &amp; Selection</a></li>
+  <li><a href="#model-building-selection" id="toc-model-building-selection" class="nav-link" data-scroll-target="#model-building-selection">Model Building &amp; Selection</a>
+  <ul class="collapse">
+  <li><a href="#best-parameters-for-each-model" id="toc-best-parameters-for-each-model" class="nav-link" data-scroll-target="#best-parameters-for-each-model">Best parameters for each model</a></li>
+  <li><a href="#recipes-impact-on-methods-performances" id="toc-recipes-impact-on-methods-performances" class="nav-link" data-scroll-target="#recipes-impact-on-methods-performances">Recipes impact on methods’ performances</a></li>
+  </ul></li>
   <li><a href="#final-model-analysis" id="toc-final-model-analysis" class="nav-link" data-scroll-target="#final-model-analysis">Final Model Analysis</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
@@ -3077,41 +3081,52 @@ Github Repo Link
 </section>
 <section id="models" class="level3">
 <h3 class="anchored" data-anchor-id="models">Models</h3>
-<ol type="1">
-<li><p>Naive Bayes: It is chosen as one of the models due to its simplicity and efficiency, making it suitable for initial exploration of the data.</p></li>
-<li><p>Binary Logistic Regression: This model serves as a baseline model for comparison, given its simplicity and interpretability. By estimating the probability of loan approval based on input features, logistic regression can provide valuable insights into the relative importance of predictors and their impact on the loan approval decision.</p></li>
-<li><p>Elastic Net: This regularized regression method that combines the penalties of both L1 (Lasso) and L2 (Ridge) regularization is useful to deal with high-dimensional data and multicollinearity.</p></li>
-</ol>
+<section id="naive-bayes" class="level5">
+<h5 class="anchored" data-anchor-id="naive-bayes">1. Naive Bayes:</h5>
+<p>It is chosen as one of the models due to its simplicity and efficiency, making it suitable for initial exploration of the data.</p>
+</section>
+<section id="binary-logistic-regression" class="level5">
+<h5 class="anchored" data-anchor-id="binary-logistic-regression">2. Binary Logistic Regression:</h5>
+<p>This model serves as a baseline model for comparison, given its simplicity and interpretability. By estimating the probability of loan approval based on input features, logistic regression can provide valuable insights into the relative importance of predictors and their impact on the loan approval decision.</p>
+</section>
+<section id="elastic-net" class="level5">
+<h5 class="anchored" data-anchor-id="elastic-net">3. Elastic Net:</h5>
+<p>This regularized regression method that combines the penalties of both L1 (Lasso) and L2 (Ridge) regularization is useful to deal with high-dimensional data and multicollinearity.</p>
 <p>Parameters to be tuned: - Penalty: The penalty parameter controls the balance between L1 and L2 regularization. It will be tuned over a range of values.</p>
-<ol start="4" type="1">
-<li>K-Nearest Neighbors (KNN): KNN is included to capture potential non-linear relationships between features and loan approval status. In scenarios where decision boundaries are complex, KNN can provide a flexible and intuitive approach to classification tasks.</li>
-</ol>
+</section>
+<section id="k-nearest-neighbors-knn" class="level5">
+<h5 class="anchored" data-anchor-id="k-nearest-neighbors-knn">4. K-Nearest Neighbors (KNN):</h5>
+<p>KNN is included to capture potential non-linear relationships between features and loan approval status. In scenarios where decision boundaries are complex, KNN can provide a flexible and intuitive approach to classification tasks.</p>
 <p>Parameters to be tuned: - Number of neighbors (k): Determines the number of nearest neighbors to consider when making predictions. It will be tuned over a range of values.</p>
-<ol start="5" type="1">
-<li>Boosted Trees:Boosted Trees: It is an ensemble learning model that combines multiple weak learners (typically decision trees) to create a strong predictive model. It iteratively builds trees, focusing on the mistakes of the previous iterations.</li>
-</ol>
+</section>
+<section id="boost-trees" class="level5">
+<h5 class="anchored" data-anchor-id="boost-trees">5. Boost Trees:</h5>
+<p>It is an ensemble learning model that combines multiple weak learners (typically decision trees) to create a strong predictive model. It iteratively builds trees, focusing on the mistakes of the previous iterations.</p>
 <p>Parameters to be tuned over different values: - Number of trees: The number of trees to include in the boosting process. - Learning rate: Controls the contribution of each tree to the final model. It will be tuned over a range of values.</p>
-<ol start="6" type="1">
-<li>Random Forest: It is another ensemble learning method that constructs a multitude of decision trees at training time and outputs the class that is the mode of the classes of the individual trees.</li>
-</ol>
+</section>
+<section id="random-forest" class="level5">
+<h5 class="anchored" data-anchor-id="random-forest">6. Random Forest:</h5>
+<p>It is another ensemble learning method that constructs a multitude of decision trees at training time and outputs the class that is the mode of the classes of the individual trees.</p>
 <p>Parameters to be tuned: - Number of variables randomly sampled as candidates at each split (mtry). - Minimum node size (min_n): The minimum number of data points allowed in a terminal node. It will be tuned over a range of values.</p>
+</section>
 </section>
 <section id="recipes" class="level3">
 <h3 class="anchored" data-anchor-id="recipes">Recipes</h3>
 <p>For this project there are two main recipes are considered Recipe 1, consider the baseline recipe, and a more complex one call Recipe 2. The baseline recipe involves steps such as removing irrelevant predictors, handling unknown levels, and one-hot encoding categorical variables. While Recipe 2 includes additional preprocessing steps such as handling correlated predictors and normalization of numeric predictors. Both recipes will be used in the models’ fittings in order to know which one performs better.</p>
 <p>For the naive Bayes model, two separate recipes are used due to the inability to use a processioning step to one-hot encoding categorical variables. The baseline recipe for this model is simpler, while the enhanced recipe includes additional preprocessing steps such as recoding factors and normalization.</p>
 </section>
-<section id="resampling-technique" class="level3">
-<h3 class="anchored" data-anchor-id="resampling-technique">Resampling Technique</h3>
-<p>Cross-validation is employed for model evaluation using 10 folds with 5 repeats. This technique helps in estimating the performance of the model on unseen data and reduces the risk of overfitting.</p>
-</section>
 <section id="metric-for-model-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="metric-for-model-comparison">Metric for Model Comparison</h3>
 <p>The metric used for model comparison and selection accuracy, as it provides a straightforward measure of each model’s overall performance in classifying loan applications correctly.</p>
 </section>
+<section id="resampling-technique" class="level3">
+<h3 class="anchored" data-anchor-id="resampling-technique">Resampling Technique</h3>
+<p>Cross-validation is employed for model evaluation using 10 folds with 5 repeats. This technique helps in estimating the performance of the model on unseen data and reduces the risk of overfitting.</p>
+</section>
 </section>
 <section id="model-building-selection" class="level2">
 <h2 class="anchored" data-anchor-id="model-building-selection">Model Building &amp; Selection</h2>
+<p>The models analysis and selection will be based on the accuracy of their performances.</p>
 <div class="cell">
 <div id="fig-results-recipe-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -3238,12 +3253,37 @@ Github Repo Link
 </div>
 </div>
 <p>In <a href="#fig-results-recipe-2">Figure 2</a> it is seen that the model with worst performance is Naive Bayes with a mean 0.612 based on the accuracy as metric. While the best model performing is Random Forest with a mean of 0.994.</p>
+<section id="best-parameters-for-each-model" class="level3">
+<h3 class="anchored" data-anchor-id="best-parameters-for-each-model">Best parameters for each model</h3>
+<p>The best performance of each model between the two recipes will be selected, and from them the best parameters will be determined for each.</p>
+<section id="elastic-net-1" class="level4">
+<h4 class="anchored" data-anchor-id="elastic-net-1">Elastic Net</h4>
+<p>The penalty parameter was set to a very small value of 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. While the mixture parameter is set to 1, indicating that the model is a pure Elastic Net, with equal mixing between L1 and L2 penalties.</p>
+<p>Thus, considering that the penalty is already at a very small value, further exploration might not be necessary. Besides, by adjusting the penalty slightly to see if it improves model performance could sacrifice too much interpretability.</p>
+</section>
+<section id="k-nearest-neighbors" class="level4">
+<h4 class="anchored" data-anchor-id="k-nearest-neighbors">K-Nearest Neighbors</h4>
+</section>
+<section id="boosted-trees" class="level4">
+<h4 class="anchored" data-anchor-id="boosted-trees">Boosted Trees</h4>
+</section>
+<section id="random-forest-1" class="level4">
+<h4 class="anchored" data-anchor-id="random-forest-1">Random Forest</h4>
+</section>
+</section>
+<section id="recipes-impact-on-methods-performances" class="level3">
+<h3 class="anchored" data-anchor-id="recipes-impact-on-methods-performances">Recipes impact on methods’ performances</h3>
+<p>Both recipes show consistent performance across different model types, with small standard errors for each metric. This suggests that the common preprocessing steps (such as removing certain columns and handling unknowns) benefit the stability of the model performance.</p>
+<p>Indeed, Recipe 2 includes additional preprocessing steps compared to Recipe 1, such as removing highly correlated predictors and normalizing numeric predictors. However, these additional steps do not seem to significantly improve the overall model performance based on the accuracy metric. As shown in <a href="#fig-results-recipe-1">Figure 1</a> and <a href="#fig-results-recipe-2">Figure 2</a>, the mean accuracy values for each model type in Recipe 2 are quite similar to those in Recipe 1. This suggests that the added complexity in preprocessing may not always translate into better predictive performance, at least based on the evaluation metric of accuracy.</p>
+<p>Across both recipes, certain model types consistently perform better than others. Specifically, the Boost Tree and Random Forest models tend to have higher accuracy compared to Naive Bayes and KNN models. This is not surprising since the ensemble-based models (Boost Tree and Random Forest) are more effective in capturing the complex relationships in the data compared to simpler models like Naive Bayes and KNN.</p>
+</section>
 </section>
 <section id="final-model-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="final-model-analysis">Final Model Analysis</h2>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>While Recipe 2 includes additional preprocessing steps, it does not lead to a substantial improvement in model performance compared to Recipe 1. The choice of model type appears to have a larger impact on performance, with ensemble-based models generally outperforming simpler models.</p>
 </section>
 
 </main>
