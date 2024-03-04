@@ -3112,6 +3112,132 @@ Github Repo Link
 </section>
 <section id="model-building-selection" class="level2">
 <h2 class="anchored" data-anchor-id="model-building-selection">Model Building &amp; Selection</h2>
+<div class="cell">
+<div id="fig-results-recipe-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Num Models</th>
+<th style="text-align: right;">Std Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Naive Bayes</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.6095911</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0024469</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Knn</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9039822</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0007896</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Elastic Net</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9879200</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0003138</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Binary Logistic</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9879733</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0003132</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Boost Tree</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9931733</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0006003</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9952622</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0001749</td>
+</tr>
+</tbody>
+</table>
+<figcaption class="figure-caption">Figure 1: Best Estimated Accuracy per model using Recipe 1</figcaption>
+</figure>
+</div>
+</div>
+<p>In <a href="#fig-results-recipe-1">Figure 1</a> it is seen that the model with worst performance is Naive Bayes with a mean 0.610 based on the accuracy as metric. While the best model performing is Random Forest with a mean of 0.995.</p>
+<div class="cell">
+<div id="fig-results-recipe-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Num Models</th>
+<th style="text-align: right;">Std Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Naive Bayes</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.6124356</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0024339</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Knn</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9043733</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0009141</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Elastic Net</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9877867</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0003248</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Binary Logistic</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9878489</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0003347</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Boost Tree</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9940267</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0002403</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9942667</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">0.0002118</td>
+</tr>
+</tbody>
+</table>
+<figcaption class="figure-caption">Figure 2: Best Estimated Accuracy per model using Recipe 1</figcaption>
+</figure>
+</div>
+</div>
+<p>In <a href="#fig-results-recipe-2">Figure 2</a> it is seen that the model with worst performance is Naive Bayes with a mean 0.612 based on the accuracy as metric. While the best model performing is Random Forest with a mean of 0.994.</p>
 </section>
 <section id="final-model-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="final-model-analysis">Final Model Analysis</h2>

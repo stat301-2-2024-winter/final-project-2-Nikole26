@@ -86,8 +86,9 @@ rf_metrics_1 <- rf_tuned_1 |>
 model_results_1 <- bind_rows(logistic_metrics_1, nb_metrics_1, bt_metrics_1, en_metrics_1,
                              knn_metrics_1, rf_metrics_1) |>
   arrange(Mean) |>
-  knitr::kable(caption = "Best Estimated Accuracy per model using Recipe 1",
-               digits = c(NA, NA, 3, 2, 5))
+  knitr::kable()
+  #knitr::kable(caption = "Best Estimated Accuracy per model using Recipe 1",
+  #             digits = c(NA, NA, 3, 2, 5))
 
 save(model_results_1, file = here("results/model_results_1.rda"))
 

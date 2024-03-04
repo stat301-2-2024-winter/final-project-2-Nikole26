@@ -28,6 +28,13 @@ citation-location: margin
 
 :::
 
+```{r}
+#| label: loading-packages-and-data
+#| echo: false
+library(tidyverse)
+library(here)
+```
+
 ## Introduction
 
 The project objective is to develop a predictive model to determine the likelihood of small businesses or start-ups having their loan applications approved by the U.S. Small Business Administration (SBA). This predictive model focuses on classifying loan applications into two categories: "Approved" and "Rejected," utilizing the dependent variable loan status, which indicates if the loan is either "Charged Off" or "Paid in Full".
@@ -102,6 +109,23 @@ The metric used for model comparison and selection accuracy, as it provides a st
 
 ## Model Building & Selection
 
+```{r}
+#| label: fig-results-recipe-1
+#| fig-cap: Best Estimated Accuracy per model using Recipe 1
+load(here("results/model_results_1.rda"))
+model_results_1
+```
+
+In @fig-results-recipe-1 it is seen that the model with worst performance is Naive Bayes with a mean 0.610 based on the accuracy as metric. While the best model performing is Random Forest with a mean of 0.995. 
+
+```{r}
+#| label: fig-results-recipe-2
+#| fig-cap: Best Estimated Accuracy per model using Recipe 1
+load(here("results/model_results_2.rda"))
+model_results_2
+```
+
+In @fig-results-recipe-2 it is seen that the model with worst performance is Naive Bayes with a mean 0.612 based on the accuracy as metric. While the best model performing is Random Forest with a mean of 0.994. 
 
 ## Final Model Analysis
 
