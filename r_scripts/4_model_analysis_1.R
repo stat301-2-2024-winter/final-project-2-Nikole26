@@ -65,7 +65,6 @@ knn_metrics_1 <- knn_tuned_1 |>
   filter(.metric == "accuracy") |>
   mutate(`Model` = "Knn") |>
   slice_max(mean) |>
-  slice_head(n = 1) |>
   select(`Model`,
          `Metric` = .metric,
          `Mean` = mean,
@@ -77,6 +76,7 @@ rf_metrics_1 <- rf_tuned_1 |>
   filter(.metric == "accuracy") |>
   mutate(`Model` = "Random Forest") |>
   slice_max(mean) |>
+  slice_head(n = 1) |>
   select(`Model`,
          `Metric` = .metric,
          `Mean` = mean,

@@ -7,30 +7,20 @@ library(tidymodels)
 library(here)
 
 # loading necessary data
+load(here("results/rf_tuned_1.rda"))
+load(here("data_splits/sba_train.rda"))
+
 # Best Model --------
-select_best(rf_tuned, metric = "rmse")
+select_best(rf_tuned_1, metric = "accuracy")
 
 # finalize workflow -----
-final_wflow <- rf_tuned |>
-  extract_workflow(rf_tuned) |>
-  finalize_workflow(select_best(rf_tuned, metric = "rmse"))
+final_wflow <- rf_tuned_1 |>
+  extract_workflow(rf_tuned_1) |>
+  finalize_workflow(select_best(rf_tuned_1, metric = "accuracy"))
 
 # train final model-----
 #set seed
 set.seed(301)
-final_fit <- fit(final_wflow, abalone_train)
+final_fit <- fit(final_wflow, sba_train)
 
-save(final_fit, file = here("exercise_1/results/final_fit.rda"))
-
-pred_rf <- abalone_test |>
-  select(age) |>
-  bind_cols(predict(final_fit, abalone_test)) |>
-  rename(rf_pred = .pred)
-
-rf_metrics <- metric_set(rmse, rsq, mae, mape)
-final_metrics <- rf_metrics(pred_rf, age, estimate = rf_pred) |>
-  select(`Metric` = .metric,
-         `Estimate` = .estimate) |>
-  knitr::kable(caption = "Model's Performance Metrics", digits = c(NA, 3))
-
-save(final_metrics, file = here("exercise_1/results/final_metrics.rda"))
+save(final_fit, file = here("results/final_fit.rda"))

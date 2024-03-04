@@ -40,10 +40,58 @@ Finally, the dataset used in this project was obtained from the U.S. Small Busin
 
 ## Data Overview
 
-
 ## Methods
 
+
+### Type of prediction problem
+
+This project focus on a classification problem where the goal is to classify loan applications into two categories: "Approved" or "Rejected" based on the loan status variable which indicates whether the loan is "Charged Off" (CHGOFF) or "Paid in Full" (PIF).
+
+### Data Splitting
+
+The data is initially split into training and testing sets using a 75/25 ratio. Stratified splitting is employed to ensure proportional representation of the target variable, which is the loan status, in both the training and testing datasets.
+
+### Models 
+
+1. Naive Bayes:
+It is chosen as one of the models due to its simplicity and efficiency, making it suitable for initial exploration of the data. 
+
+2. Binary Logistic Regression:
+This model serves as a baseline model for comparison, given its simplicity and interpretability. By estimating the probability of loan approval based on input features, logistic regression can provide valuable insights into the relative importance of predictors and their impact on the loan approval decision.
+
+3. Elastic Net:
+This regularized regression method that combines the penalties of both L1 (Lasso) and L2 (Ridge) regularization is useful to deal with high-dimensional data and multicollinearity.
+
+Parameters to be tuned:
+- Penalty: The penalty parameter controls the balance between L1 and L2 regularization. It will be tuned over a range of values.
+
+4. K-Nearest Neighbors (KNN):
+KNN is included to capture potential non-linear relationships between features and loan approval status. In scenarios where decision boundaries are complex, KNN can provide a flexible and intuitive approach to classification tasks.
+
+Parameters to be tuned:
+- Number of neighbors (k): Determines the number of nearest neighbors to consider when making predictions. It will be tuned over a range of values.
+
+5. Boosted Trees:Boosted Trees:
+It is an ensemble learning model that combines multiple weak learners (typically decision trees) to create a strong predictive model. It iteratively builds trees, focusing on the mistakes of the previous iterations.
+
+Parameters to be tuned over different values:
+- Number of trees: The number of trees to include in the boosting process.
+- Learning rate: Controls the contribution of each tree to the final model. It will be tuned over a range of values.
+
+6. Random Forest:
+It is another ensemble learning method that constructs a multitude of decision trees at training time and outputs the class that is the mode of the classes of the individual trees.
+
+Parameters to be tuned:
+- Number of variables randomly sampled as candidates at each split (mtry).
+- Minimum node size (min_n): The minimum number of data points allowed in a terminal node. It will be tuned over a range of values.
+
+### Recipes
+
+
+
+
 ## Model Building & Selection
+
 
 ## Final Model Analysis
 

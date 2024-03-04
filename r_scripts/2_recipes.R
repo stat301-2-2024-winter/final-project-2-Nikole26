@@ -13,12 +13,12 @@ tidymodels_prefer()
 load(here("data_splits/sba_train.rda"))
 
 # build recipes----
-sba_recipe_1_test <- 
+sba_recipe_1 <- 
   recipe(mis_status ~ ., data = sba_train) |>
   step_rm(loan_nr_chk_dgt, name, city, state, bank, bank_state, approval_date, chg_off_date, disbursement_date) |>
-  #step_unknown(all_nominal_predictors()) |>
+  step_unknown(all_nominal_predictors()) |>
   step_dummy(all_nominal_predictors(), one_hot = TRUE) 
-  #step_zv(all_predictors())
+  step_zv(all_predictors())
 
 sba_recipe_baseline <- 
   recipe(mis_status ~ ., data = sba_train) |>
@@ -38,7 +38,7 @@ sba_recipe_nb_2 <-
   step_center(all_numeric(), -all_outcomes()) |>
   step_normalize(all_numeric())
 
-sba_recipe_2_test <-
+sba_recipe_2 <-
   recipe(mis_status ~ ., data = sba_train) |>
   step_rm(loan_nr_chk_dgt, name, city, state, bank, bank_state, approval_date, chg_off_date, disbursement_date) |>
   step_unknown(all_nominal_predictors()) |>

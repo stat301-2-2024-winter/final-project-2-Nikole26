@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nikole Montero Cervantes">
-<meta name="dcterms.date" content="2024-03-03">
+<meta name="dcterms.date" content="2024-03-04">
 
 <title>Final Report</title>
 <style>
@@ -2993,7 +2993,13 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#type-of-prediction-problem" id="toc-type-of-prediction-problem" class="nav-link" data-scroll-target="#type-of-prediction-problem">Type of prediction problem</a></li>
+  <li><a href="#data-splitting" id="toc-data-splitting" class="nav-link" data-scroll-target="#data-splitting">Data Splitting</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
+  <li><a href="#recipes" id="toc-recipes" class="nav-link" data-scroll-target="#recipes">Recipes</a></li>
+  </ul></li>
   <li><a href="#model-building-selection" id="toc-model-building-selection" class="nav-link" data-scroll-target="#model-building-selection">Model Building &amp; Selection</a></li>
   <li><a href="#final-model-analysis" id="toc-final-model-analysis" class="nav-link" data-scroll-target="#final-model-analysis">Final Model Analysis</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
@@ -3023,7 +3029,7 @@ Data Science 2 with R (STAT 301-2)</p><p></p>
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 3, 2024</p>
+      <p class="date">March 4, 2024</p>
     </div>
   </div>
   
@@ -3058,6 +3064,38 @@ Github Repo Link
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="type-of-prediction-problem" class="level3">
+<h3 class="anchored" data-anchor-id="type-of-prediction-problem">Type of prediction problem</h3>
+<p>This project focus on a classification problem where the goal is to classify loan applications into two categories: “Approved” or “Rejected” based on the loan status variable which indicates whether the loan is “Charged Off” (CHGOFF) or “Paid in Full” (PIF).</p>
+</section>
+<section id="data-splitting" class="level3">
+<h3 class="anchored" data-anchor-id="data-splitting">Data Splitting</h3>
+<p>The data is initially split into training and testing sets using a 75/25 ratio. Stratified splitting is employed to ensure proportional representation of the target variable, which is the loan status, in both the training and testing datasets.</p>
+</section>
+<section id="models" class="level3">
+<h3 class="anchored" data-anchor-id="models">Models</h3>
+<ol type="1">
+<li><p>Naive Bayes: It is chosen as one of the models due to its simplicity and efficiency, making it suitable for initial exploration of the data.</p></li>
+<li><p>Binary Logistic Regression: This model serves as a baseline model for comparison, given its simplicity and interpretability. By estimating the probability of loan approval based on input features, logistic regression can provide valuable insights into the relative importance of predictors and their impact on the loan approval decision.</p></li>
+<li><p>Elastic Net: This regularized regression method that combines the penalties of both L1 (Lasso) and L2 (Ridge) regularization is useful to deal with high-dimensional data and multicollinearity.</p></li>
+</ol>
+<p>Parameters to be tuned: - Penalty: The penalty parameter controls the balance between L1 and L2 regularization. It will be tuned over a range of values.</p>
+<ol start="4" type="1">
+<li>K-Nearest Neighbors (KNN): KNN is included to capture potential non-linear relationships between features and loan approval status. In scenarios where decision boundaries are complex, KNN can provide a flexible and intuitive approach to classification tasks.</li>
+</ol>
+<p>Parameters to be tuned: - Number of neighbors (k): Determines the number of nearest neighbors to consider when making predictions. It will be tuned over a range of values.</p>
+<ol start="5" type="1">
+<li>Boosted Trees:Boosted Trees: It is an ensemble learning model that combines multiple weak learners (typically decision trees) to create a strong predictive model. It iteratively builds trees, focusing on the mistakes of the previous iterations.</li>
+</ol>
+<p>Parameters to be tuned over different values: - Number of trees: The number of trees to include in the boosting process. - Learning rate: Controls the contribution of each tree to the final model. It will be tuned over a range of values.</p>
+<ol start="6" type="1">
+<li>Random Forest: It is another ensemble learning method that constructs a multitude of decision trees at training time and outputs the class that is the mode of the classes of the individual trees.</li>
+</ol>
+<p>Parameters to be tuned: - Number of variables randomly sampled as candidates at each split (mtry). - Minimum node size (min_n): The minimum number of data points allowed in a terminal node. It will be tuned over a range of values.</p>
+</section>
+<section id="recipes" class="level3">
+<h3 class="anchored" data-anchor-id="recipes">Recipes</h3>
+</section>
 </section>
 <section id="model-building-selection" class="level2">
 <h2 class="anchored" data-anchor-id="model-building-selection">Model Building &amp; Selection</h2>
