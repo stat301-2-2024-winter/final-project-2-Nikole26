@@ -1,6 +1,5 @@
 # Final Project ----
-# Analysis of trained models (comparisons) 
-# Select final model
+# Analysis of tuned models (comparisons) 
 
 # load packages ----
 library(tidyverse)

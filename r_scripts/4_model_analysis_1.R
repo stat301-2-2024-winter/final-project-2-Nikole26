@@ -1,6 +1,5 @@
 # Final Project ----
-# Analysis of trained models (comparisons) 
-# Select final model
+# Analysis of tuned models (comparisons) 
 
 # load packages ----
 library(tidyverse)
@@ -66,6 +65,7 @@ knn_metrics_1 <- knn_tuned_1 |>
   filter(.metric == "accuracy") |>
   mutate(`Model` = "Knn") |>
   slice_max(mean) |>
+  slice_head(n = 1) |>
   select(`Model`,
          `Metric` = .metric,
          `Mean` = mean,
