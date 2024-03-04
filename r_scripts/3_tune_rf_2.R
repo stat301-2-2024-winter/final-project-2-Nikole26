@@ -18,7 +18,7 @@ load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
 # load pre-processing/feature engineering/recipe
-load(here("recipes/sba_recipe_rf.rda"))
+load(here("recipes/sba_recipe_2_test.rda"))
 
 # model specifications ----
 rf_model <-
@@ -34,7 +34,7 @@ rf_model <-
 rf_wflow <- 
   workflow() |>
   add_model(rf_model) |>
-  add_recipe((sba_recipe_rf))
+  add_recipe(sba_recipe_2_test)
 
 # hyperparameter tuning values ----
 # check ranges for hyperparameters
@@ -50,10 +50,10 @@ rf_grid <- grid_regular(rf_params, levels = 5)
 
 # fit workflows/models ----
 set.seed(7122)
-rf_tuned_1 <- tune_grid(rf_wflow,
+rf_tuned_2_test <- tune_grid(rf_wflow,
                       sba_folds,
                       grid = rf_grid,
                       control = keep_wflow)
 
 # write out results (fitted/trained workflows) ----
-save(rf_tuned_2, file = here("results/rf_tuned_2.rda"))
+save(rf_tuned_2_test, file = here("results/rf_tuned_2_test.rda"))

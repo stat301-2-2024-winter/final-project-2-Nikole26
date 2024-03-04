@@ -37,4 +37,4 @@ nb_fit_1 <-
   )
 
 # write out results (fitted/trained workflows)
-save(nb_fit_1, file = "results/nb_fit_1.rda")
+save(nb_fit_1, file = here("results/nb_fit_1.rda"))
