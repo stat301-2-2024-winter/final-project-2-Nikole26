@@ -42,6 +42,7 @@ Finally, the dataset used in this project was obtained from the U.S. Small Busin
 
 ## Methods
 
+The following aspects where ocnsidering in the methodoly to apprac this project. 
 
 ### Type of prediction problem
 
@@ -87,8 +88,17 @@ Parameters to be tuned:
 
 ### Recipes
 
+For this project there are two main recipes are considered Recipe 1, consider the baseline recipe, and a more complex one call Recipe 2. The baseline recipe involves steps such as removing irrelevant predictors, handling unknown levels, and one-hot encoding categorical variables. While Recipe 2 includes additional preprocessing steps such as handling correlated predictors and normalization of numeric predictors. Both recipes will be used in the models' fittings in order to know which one performs better. 
 
+For the naive Bayes model, two separate recipes are used due to the inability to use a processioning step to one-hot encoding categorical variables. The baseline recipe for this model is simpler, while the enhanced recipe includes additional preprocessing steps such as recoding factors and normalization.
 
+### Resampling Technique
+
+Cross-validation is employed for model evaluation using 10 folds with 5 repeats. This technique helps in estimating the performance of the model on unseen data and reduces the risk of overfitting.
+
+### Metric for Model Comparison
+
+The metric used for model comparison and selection accuracy, as it provides a straightforward measure of each model's overall performance in classifying loan applications correctly. 
 
 ## Model Building & Selection
 

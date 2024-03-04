@@ -2999,6 +2999,8 @@ vertical-align: -.125em;
   <li><a href="#data-splitting" id="toc-data-splitting" class="nav-link" data-scroll-target="#data-splitting">Data Splitting</a></li>
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
   <li><a href="#recipes" id="toc-recipes" class="nav-link" data-scroll-target="#recipes">Recipes</a></li>
+  <li><a href="#resampling-technique" id="toc-resampling-technique" class="nav-link" data-scroll-target="#resampling-technique">Resampling Technique</a></li>
+  <li><a href="#metric-for-model-comparison" id="toc-metric-for-model-comparison" class="nav-link" data-scroll-target="#metric-for-model-comparison">Metric for Model Comparison</a></li>
   </ul></li>
   <li><a href="#model-building-selection" id="toc-model-building-selection" class="nav-link" data-scroll-target="#model-building-selection">Model Building &amp; Selection</a></li>
   <li><a href="#final-model-analysis" id="toc-final-model-analysis" class="nav-link" data-scroll-target="#final-model-analysis">Final Model Analysis</a></li>
@@ -3064,6 +3066,7 @@ Github Repo Link
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>The following aspects where ocnsidering in the methodoly to apprac this project.</p>
 <section id="type-of-prediction-problem" class="level3">
 <h3 class="anchored" data-anchor-id="type-of-prediction-problem">Type of prediction problem</h3>
 <p>This project focus on a classification problem where the goal is to classify loan applications into two categories: “Approved” or “Rejected” based on the loan status variable which indicates whether the loan is “Charged Off” (CHGOFF) or “Paid in Full” (PIF).</p>
@@ -3095,6 +3098,16 @@ Github Repo Link
 </section>
 <section id="recipes" class="level3">
 <h3 class="anchored" data-anchor-id="recipes">Recipes</h3>
+<p>For this project there are two main recipes are considered Recipe 1, consider the baseline recipe, and a more complex one call Recipe 2. The baseline recipe involves steps such as removing irrelevant predictors, handling unknown levels, and one-hot encoding categorical variables. While Recipe 2 includes additional preprocessing steps such as handling correlated predictors and normalization of numeric predictors. Both recipes will be used in the models’ fittings in order to know which one performs better.</p>
+<p>For the naive Bayes model, two separate recipes are used due to the inability to use a processioning step to one-hot encoding categorical variables. The baseline recipe for this model is simpler, while the enhanced recipe includes additional preprocessing steps such as recoding factors and normalization.</p>
+</section>
+<section id="resampling-technique" class="level3">
+<h3 class="anchored" data-anchor-id="resampling-technique">Resampling Technique</h3>
+<p>Cross-validation is employed for model evaluation using 10 folds with 5 repeats. This technique helps in estimating the performance of the model on unseen data and reduces the risk of overfitting.</p>
+</section>
+<section id="metric-for-model-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="metric-for-model-comparison">Metric for Model Comparison</h3>
+<p>The metric used for model comparison and selection accuracy, as it provides a straightforward measure of each model’s overall performance in classifying loan applications correctly.</p>
 </section>
 </section>
 <section id="model-building-selection" class="level2">
