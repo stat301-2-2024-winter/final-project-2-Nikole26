@@ -3112,7 +3112,7 @@ Github Repo Link
 </section>
 <section id="recipes" class="level3">
 <h3 class="anchored" data-anchor-id="recipes">Recipes</h3>
-<p>For this project there are two main recipes are considered Recipe 1, consider the baseline recipe, and a more complex one call Recipe 2. The baseline recipe involves steps such as removing irrelevant predictors, handling unknown levels, and one-hot encoding categorical variables. While Recipe 2 includes additional preprocessing steps such as handling correlated predictors and normalization of numeric predictors. Both recipes will be used in the models’ fittings in order to know which one performs better.</p>
+<p>For this project there are two main recipes are considered Recipe 1, consider the baseline recipe, and a more complex one call Recipe 2. The baseline recipe involves steps such as removing irrelevant predictors, handling unknown levels, and one-hot encoding categorical variables. While Recipe 2 includes additional preprocessing steps to handle correlated predictors and normalize the numeric predictors. Both recipes will be used in the models’ fittings in order to know which one performs better.</p>
 <p>For the naive Bayes model, two separate recipes are used due to the inability to use a processioning step to one-hot encoding categorical variables. The baseline recipe for this model is simpler, while the enhanced recipe includes additional preprocessing steps such as recoding factors and normalization.</p>
 </section>
 <section id="metric-for-model-comparison" class="level3">
@@ -3258,14 +3258,17 @@ Github Repo Link
 <p>The best performance of each model between the two recipes will be selected, and from them the best parameters will be determined for each.</p>
 <section id="elastic-net-1" class="level4">
 <h4 class="anchored" data-anchor-id="elastic-net-1">Elastic Net</h4>
-<p>The penalty parameter was set to a very small value of 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. While the mixture parameter is set to 1, indicating that the model is a pure Elastic Net, with equal mixing between L1 and L2 penalties.</p>
+<p>The best penalty parameter was set to a very small value of 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. While the mixture parameter is set to 1, indicating that the model is a pure Elastic Net, with equal mixing between L1 and L2 penalties.</p>
 <p>Thus, considering that the penalty is already at a very small value, further exploration might not be necessary. Besides, by adjusting the penalty slightly to see if it improves model performance could sacrifice too much interpretability.</p>
 </section>
 <section id="k-nearest-neighbors" class="level4">
 <h4 class="anchored" data-anchor-id="k-nearest-neighbors">K-Nearest Neighbors</h4>
+<p>The best number of neighbors chosen for the KNN model was 5, which means that the model predicts the outcome based on the 5 nearest neighbors in the feature space. This number of neighbors used in recipe 2 perform better than the 10 neighbors used in recipe 1. This is because …..</p>
 </section>
 <section id="boosted-trees" class="level4">
 <h4 class="anchored" data-anchor-id="boosted-trees">Boosted Trees</h4>
+<p>The number of variables randomly sampled at each split when building the trees was set to 11 for the model using recipe 1, and it performed better than when this parameter was set to 10 for the model using recipe 2. Hence, it could be inferred that for this dataset used in this project selecting a higher amount of features leads to better model performance by focusing on the most important predictors.</p>
+<p>The minimum number of observations required in a terminal node of the tree. It’s set to 16. Learn_rate: The learning rate controls the contribution of each tree to the final prediction. A value of 1.00 indicates full learning from each tree.</p>
 </section>
 <section id="random-forest-1" class="level4">
 <h4 class="anchored" data-anchor-id="random-forest-1">Random Forest</h4>
