@@ -19,6 +19,7 @@ sba_test_tidy <- sba_test |>
  approval_fy = ifelse(is.na(approval_fy), mean(approval_fy, na.rm = TRUE), approval_fy),
     new_exist = ifelse(is.na(new_exist), mean(new_exist, na.rm = TRUE), new_exist)
   )
+
 #sba_test <- sba_test |>
 #  mutate(across(where(is.numeric), ~ifelse(is.na(.), mean(., na.rm = TRUE), .))) |>
 #  mutate(across(where(is.factor), ~ifelse(is.na(.), table(.)[which.max(table(.))], .)))
@@ -45,12 +46,20 @@ conf_mat <- conf_mat(sba_results_rf, mis_status, .pred_class)
 
 save(conf_mat, file = here("results/conf_mat.rda"))
 
-# Predictions using roc_auc-----------
-mis_status_pred <- predict(final_fit_roc, sba_test_tidy) |>
-  bind_cols(sba_test |>
-              select(mis_status))
+# Predictions to create roc_auc-----------
+loan_results <- predict(final_fit_roc, new_data = sba_test_tidy) |>
+  bind_cols(sba_test_tidy |> select(mis_status)) 
 
-roc_data <- roc_curve(mis_status_pred, mis_status, truth = c("CHGOFF", "PIF"))
-roc_curve(mis_status_pred, mis_status, truth = c(CHGOFF, .pred_class$PIF))
+pred_prob <- predict(final_fit_roc, sba_test_tidy, type = "prob")
 
-#autoplot(roc_curve())
+loan_results <- loan_results |>
+  select(mis_status, .pred_class) |>
+  bind_cols(pred_prob)
+
+# Visualize results 
+# The positive class is PIF since meaning the loan application is accepted by the SBA
+sba_curve <- roc_curve(loan_results, mis_status, .pred_PIF)
+roc_curve<- autoplot(sba_curve)
+
+save(roc_curve, file = here("results/roc_curve.rda"))
+

@@ -47,6 +47,8 @@ Finally, the dataset used in this project was obtained from the U.S. Small Busin
 
 ## Data Overview
 
+
+
 ## Methods
 
 The following aspects where considering in the methodology to approach this project. 
@@ -92,8 +94,8 @@ Parameters to be tuned over different values:
 It is another ensemble learning method that constructs a multitude of decision trees at training time and outputs the class that is the mode of the classes of the individual trees.
 
 Parameters to be tuned:
-- Number of variables randomly sampled as candidates at each split (mtry).
-- Minimum node size (min_n): The minimum number of data points allowed in a terminal node. It will be tuned over a range of values.
+* Number of variables randomly sampled as candidates at each split (mtry).
+* Minimum node size (min_n): The minimum number of data points allowed in a terminal node. It will be tuned over a range of values.
 
 ### Recipes
 
@@ -188,7 +190,22 @@ False Positives: The model incorrectly predicted 8 instances as Charged Off (CHG
 
 True Negatives: The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
 
-Overall, based on this confusion matrix, the model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.
+Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.
+
+```{r}
+#| label: fig-table-roc
+#| fig-cap: ROC (Receiver Operating Characteristic Curve) 
+load(here("results/roc_curve.rda"))
+roc_curve
+```
+
+### Does the effort of building a predictive model really pay off?
+
+In the context of loan application approval, accuracy is crucial for making the right decisions about approving or rejecting applications. The random forest model's higher accuracy (0.9949333) compared to the baseline logistic model (0.9879733) indicates a more precise prediction capability. This difference suggests that the random forest model can better differentiate between applicants who should be approved and those who shouldn't, reducing the risk of approving risky loans while also minimizing the rejection of viable applicants.
+
+Moreover, the practical implications of the chosen model's predictions are significant in loan approval decisions. Approving a risky applicant (false positives) can lead to financial losses due to loan defaults, while rejecting a viable applicant (false negatives) can result in missed business opportunities and potential customer dissatisfaction. Therefore, the model's ability to minimize these errors is crucial for the financial health and customer satisfaction of the Small Business Administration (SBA).
+
+Hence, considering the context of loan application approval, the significant improvement in accuracy provided by the random forest model suggests that the effort invested in building it is likely justified.
 
 ## Conclusion
 
