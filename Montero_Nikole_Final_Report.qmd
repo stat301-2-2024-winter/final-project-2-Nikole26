@@ -49,15 +49,17 @@ Finally, the dataset used in this project was obtained from the U.S. Small Busin
 
 ## Methods
 
-The following aspects where ocnsidering in the methodoly to apprac this project. 
+The following aspects where considering in the methodology to approach this project. 
 
 ### Type of prediction problem
 
-This project focus on a classification problem where the goal is to classify loan applications into two categories: "Approved" or "Rejected" based on the loan status variable which indicates whether the loan is "Charged Off" (CHGOFF) or "Paid in Full" (PIF).
+This project focus on a classification problem where the goal is to classify loan applications into two categories: "Approved" or "Rejected" based on the loan status variable, the target variable, which indicates whether the loan is "Charged Off" (CHGOFF) or "Paid in Full" (PIF).
 
 ### Data Splitting
 
-The data is initially split into training and testing sets using a 75/25 ratio. Stratified splitting is employed to ensure proportional representation of the target variable, which is the loan status, in both the training and testing datasets.
+The data is initially split into training and testing sets using a 75/25 ratio. This means that 75% of the data conforms training data which is used to train the machine learning model. It serves as the basis for the model to learn the patterns and relationships between the input features and the target variable, the loan status. While, 25% of the data that was not used during training will conform the testing data. The best model will then make predictions on this data, and these predictions will be compared against the actual outcomes to assess how well the model generalizes to new, unseen data. 
+
+Stratified splitting is employed in this project to ensure proportional representation of the target variable, which is the loan status, in both the training and testing datasets.
 
 ### Models 
 
@@ -161,7 +163,32 @@ Across both recipes, certain model types consistently perform better than others
 
 ## Final Model Analysis
 
+```{r}
+#| label: fig-best-model-accuracy
+#| fig-cap: Best Model Accuracy
+load(here("results/acc_rf.rda"))
+acc_rf
+```
 
+@fig-best-model-accuracy shows that the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.
+
+```{r}
+#| label: fig-table-confusion-matrix
+#| fig-cap: Confusion Matrix
+load(here("results/conf_mat.rda"))
+conf_mat 
+```
+The values displayed in @fig-table-confusion-matrix are interpreted as it follows:
+
+True Positives: The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.
+
+False Negatives: The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.
+
+False Positives: The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.
+
+True Negatives: The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
+
+Overall, based on this confusion matrix, the model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.
 
 ## Conclusion
 

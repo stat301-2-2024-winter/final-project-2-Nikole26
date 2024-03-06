@@ -3070,14 +3070,15 @@ Github Repo Link
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>The following aspects where ocnsidering in the methodoly to apprac this project.</p>
+<p>The following aspects where considering in the methodology to approach this project.</p>
 <section id="type-of-prediction-problem" class="level3">
 <h3 class="anchored" data-anchor-id="type-of-prediction-problem">Type of prediction problem</h3>
-<p>This project focus on a classification problem where the goal is to classify loan applications into two categories: “Approved” or “Rejected” based on the loan status variable which indicates whether the loan is “Charged Off” (CHGOFF) or “Paid in Full” (PIF).</p>
+<p>This project focus on a classification problem where the goal is to classify loan applications into two categories: “Approved” or “Rejected” based on the loan status variable, the target variable, which indicates whether the loan is “Charged Off” (CHGOFF) or “Paid in Full” (PIF).</p>
 </section>
 <section id="data-splitting" class="level3">
 <h3 class="anchored" data-anchor-id="data-splitting">Data Splitting</h3>
-<p>The data is initially split into training and testing sets using a 75/25 ratio. Stratified splitting is employed to ensure proportional representation of the target variable, which is the loan status, in both the training and testing datasets.</p>
+<p>The data is initially split into training and testing sets using a 75/25 ratio. This means that 75% of the data conforms training data which is used to train the machine learning model. It serves as the basis for the model to learn the patterns and relationships between the input features and the target variable, the loan status. While, 25% of the data that was not used during training will conform the testing data. The best model will then make predictions on this data, and these predictions will be compared against the actual outcomes to assess how well the model generalizes to new, unseen data.</p>
+<p>Stratified splitting is employed in this project to ensure proportional representation of the target variable, which is the loan status, in both the training and testing datasets.</p>
 </section>
 <section id="models" class="level3">
 <h3 class="anchored" data-anchor-id="models">Models</h3>
@@ -3283,6 +3284,46 @@ Github Repo Link
 </section>
 <section id="final-model-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="final-model-analysis">Final Model Analysis</h2>
+<div class="cell">
+<div id="fig-best-model-accuracy" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Metric</th>
+<th style="text-align: right;">Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">accuracy</td>
+<td style="text-align: right;">0.9949333</td>
+</tr>
+</tbody>
+</table>
+<figcaption class="figure-caption">Figure 3: Best Model Accuracy</figcaption>
+</figure>
+</div>
+</div>
+<p><a href="#fig-best-model-accuracy">Figure 3</a> shows that the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$table
+          Truth
+Prediction CHGOFF  PIF
+    CHGOFF   3742   30
+    PIF         8 3720
+
+attr(,&quot;class&quot;)
+[1] &quot;conf_mat&quot;</code></pre>
+</div>
+</div>
+<p>The values displayed in <strong>?@fig-table-confusion-matrix</strong> are interpreted as it follows:</p>
+<p>True Positives: The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.</p>
+<p>False Negatives: The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.</p>
+<p>False Positives: The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.</p>
+<p>True Negatives: The model correctly predicted 3,720 instances as “PIF” Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.</p>
+<p>Overall, based on this confusion matrix, the model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
