@@ -28,7 +28,7 @@ sba_tidy <- sba_original_data |>
     low_doc = factor(low_doc, levels = c("Y", "N"))
   )
 
-# Chossing how to deal with NA values----
+# Analysing the target variable in the original dataset----
 ggplot(sba_tidy, aes(x = mis_status)) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(title = "Distribution of Loan Status",

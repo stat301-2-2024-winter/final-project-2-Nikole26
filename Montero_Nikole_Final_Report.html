@@ -3070,6 +3070,7 @@ Github Repo Link
 </section>
 <section id="data-overview" class="level2">
 <h2 class="anchored" data-anchor-id="data-overview">Data Overview</h2>
+<p>To deal with the missing values, I decided to downsample my data by focusing on the target variable, the loan status, which has two categories: “Charged Off” (CHGOFF) or “Paid in Full” (PIF). Thus, I consider 15,000 observations for each category, achieving the downsample of my dataset to 30,000 observations. This introduced an artificial balance of the binary target variable, as seen in FIGURE COMPLETE, which will address potential imbalances in the original data distribution.</p>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
@@ -3287,6 +3288,26 @@ Github Repo Link
 </section>
 <section id="final-model-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="final-model-analysis">Final Model Analysis</h2>
+<p>To assess the Random Forest performance the following metrics were considered: confusion matrix, accuracy and the receiver operating characteristic curve.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$table
+          Truth
+Prediction CHGOFF  PIF
+    CHGOFF   3742   30
+    PIF         8 3720
+
+attr(,&quot;class&quot;)
+[1] &quot;conf_mat&quot;</code></pre>
+</div>
+</div>
+<p>The values displayed in <strong>?@fig-table-confusion-matrix</strong> are interpreted as it follows:</p>
+<p>True Positives: The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.</p>
+<p>False Negatives: The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.</p>
+<p>False Positives: The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.</p>
+<p>True Negatives: The model correctly predicted 3,720 instances as “PIF” Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.</p>
+<p>Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.</p>
+<p>In addition, as <a href="#fig-best-model-accuracy">Figure 3</a> shows the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.</p>
 <div class="cell">
 <div id="fig-best-model-accuracy" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -3308,25 +3329,6 @@ Github Repo Link
 </figure>
 </div>
 </div>
-<p><a href="#fig-best-model-accuracy">Figure 3</a> shows that the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>$table
-          Truth
-Prediction CHGOFF  PIF
-    CHGOFF   3742   30
-    PIF         8 3720
-
-attr(,&quot;class&quot;)
-[1] &quot;conf_mat&quot;</code></pre>
-</div>
-</div>
-<p>The values displayed in <strong>?@fig-table-confusion-matrix</strong> are interpreted as it follows:</p>
-<p>True Positives: The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.</p>
-<p>False Negatives: The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.</p>
-<p>False Positives: The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.</p>
-<p>True Negatives: The model correctly predicted 3,720 instances as “PIF” Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.</p>
-<p>Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-table-roc" class="quarto-figure quarto-figure-center anchored">

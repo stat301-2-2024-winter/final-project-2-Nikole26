@@ -47,7 +47,7 @@ Finally, the dataset used in this project was obtained from the U.S. Small Busin
 
 ## Data Overview
 
-
+To deal with the missing values, I decided to downsample my data by focusing on the target variable, the loan status, which has two categories: "Charged Off" (CHGOFF) or "Paid in Full" (PIF). Thus, I consider 15,000 observations for each category, achieving the downsample of my dataset to 30,000 observations. This introduced an artificial balance of the binary target variable, as seen in FIGURE COMPLETE, which will address potential imbalances in the original data distribution.   
 
 ## Methods
 
@@ -165,14 +165,7 @@ Across both recipes, certain model types consistently perform better than others
 
 ## Final Model Analysis
 
-```{r}
-#| label: fig-best-model-accuracy
-#| fig-cap: Best Model Accuracy
-load(here("results/acc_rf.rda"))
-acc_rf
-```
-
-@fig-best-model-accuracy shows that the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.
+To assess the Random Forest performance the following metrics were considered: confusion matrix, accuracy and the receiver operating characteristic curve.
 
 ```{r}
 #| label: fig-table-confusion-matrix
@@ -191,6 +184,15 @@ False Positives: The model incorrectly predicted 8 instances as Charged Off (CHG
 True Negatives: The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
 
 Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.
+
+In addition, as @fig-best-model-accuracy shows the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.
+
+```{r}
+#| label: fig-best-model-accuracy
+#| fig-cap: Best Model Accuracy
+load(here("results/acc_rf.rda"))
+acc_rf
+```
 
 ```{r}
 #| label: fig-table-roc
