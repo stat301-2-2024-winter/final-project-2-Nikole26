@@ -171,7 +171,7 @@ To assess the Random Forest performance the following metrics were considered: c
 #| label: fig-table-confusion-matrix
 #| fig-cap: Confusion Matrix
 load(here("results/conf_mat.rda"))
-conf_mat 
+print(conf_mat$table)
 ```
 The values displayed in @fig-table-confusion-matrix are interpreted as it follows:
 

@@ -34,3 +34,19 @@ citation-location: margin
 library(tidyverse)
 library(here)
 ```
+
+# Introduction
+
+The project objective is to develop a predictive model to determine the likelihood of small businesses or start-ups having their loan applications approved by the U.S. Small Business Administration (SBA). This predictive model focuses on classifying loan applications into two categories: 'Approved' and 'Rejected,' utilizing the dependent variable loan status, which indicates if the loan is either 'Charged Off' or 'Paid in Full'. The dataset was sourced from Kaggle, and this report presents key insights, findings, and future research recommendations.
+
+# Main Insights and Findings
+
+## Type of prediction problem
+
+## Models Assesment
+
+### Recipe Performance
+
+## Best Model - Radom Forest
+
+# Opportunity for future research
