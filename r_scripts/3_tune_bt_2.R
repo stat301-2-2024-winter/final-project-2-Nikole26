@@ -1,5 +1,5 @@
 # Final Project ----
-# Define and fit Boost Tree with a more complex recipe
+# Define and fit Boost Tree with second recipe
 
 # load packages ----
 library(tidyverse)

@@ -1,5 +1,5 @@
 # Final Project ----
-# Define and fit Elastic Net with basic recipe
+# Define and fit Elastic Net using second recipe
 
 # load packages ----
 library(tidyverse)

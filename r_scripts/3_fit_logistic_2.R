@@ -1,5 +1,5 @@
 # Final Project ----
-# Define and fit baseline models (null and very simple regression model)
+# Define and fit baseline model: Binary Logistic Regression using second recipe
 
 # load packages ----
 library(tidyverse)

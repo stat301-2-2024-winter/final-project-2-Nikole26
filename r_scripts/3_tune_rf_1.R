@@ -1,5 +1,5 @@
 # L06 Model Tuning ----
-# Define and fit ...
+# Define and fit Random Forest Model using baseline recipe
 
 # load packages ----
 library(tidyverse)

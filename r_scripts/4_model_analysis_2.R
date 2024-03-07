@@ -1,5 +1,5 @@
-# Final Project ----
-# Analysis of tuned models (comparisons) 
+# Final Project ---- 
+# Analysis of tuned models (comparisons) using second recipe
 
 # load packages ----
 library(tidyverse)

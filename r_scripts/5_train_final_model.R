@@ -1,5 +1,5 @@
 # Final Project ----
-# Select final model
+# Select final model and train it
 
 # load packages ----
 library(tidyverse)

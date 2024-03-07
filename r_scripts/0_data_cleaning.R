@@ -1,5 +1,5 @@
 # Data cleaning
-# Deal with missing values
+# Deal with missing values and tidying dataset
 
 library(tidyverse)
 library(here)

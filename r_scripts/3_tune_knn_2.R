@@ -1,5 +1,5 @@
 # Final Project ----
-# Define and fit Knn with basic recipe
+# Define and fit Knn model using second recipe recipe
 
 # load packages ----
 library(tidyverse)
