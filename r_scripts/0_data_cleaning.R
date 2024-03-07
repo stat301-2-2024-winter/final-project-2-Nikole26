@@ -28,17 +28,20 @@ sba_tidy <- sba_original_data |>
     low_doc = factor(low_doc, levels = c("Y", "N"))
   )
 
+sba_tidy_table <- skimr::skim_without_charts(sba_tidy)
+
 # Analysing the target variable in the original dataset----
-ggplot(sba_tidy, aes(x = mis_status)) +
-  geom_bar(fill = "skyblue", color = "black") +
+original_mis_status_plot <- ggplot(sba_tidy, aes(x = mis_status)) +
+  geom_bar(fill = "darkblue", color = "black") +
   labs(title = "Distribution of Loan Status",
        x = "Loan Status",
        y = "Count")
 
+save(original_mis_status_plot, file = here("results/original_mis_status_plot.rda"))
+
 ## Dropping NA
 #sba_cleaned <- sba_original_data |>
 #  drop_na()
-
 
 ## Downsample
 group0 <- sba_tidy |>
@@ -51,12 +54,16 @@ group1 <- sba_tidy |>
 
 sba_downsampled <- bind_rows(group0, group1)
 
-ggplot(sba_downsampled, aes(x = mis_status)) +
-  geom_bar(fill = "skyblue", color = "black") +
+skimr::skim_without_charts(sba_downsampled)
+
+mis_status_plot<- ggplot(sba_downsampled, aes(x = mis_status)) +
+  geom_bar(fill = "darkblue", color = "black") +
   labs(title = "Distribution of Loan Status",
        x = "Loan Status",
        y = "Count")
 
-# Saving clean dataset
+save(mis_status_plot, file = here("results/mis_status_plot.rda"))
+
+# Saving clean dataset 
 saveRDS(sba_downsampled, here("data/sba.rds"))
 
