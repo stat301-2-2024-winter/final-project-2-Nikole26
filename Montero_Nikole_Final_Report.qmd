@@ -226,14 +226,15 @@ acc_rf
 ```
 
 ```{r}
-#| label: fig-table-roc
+#| label: fig-roc
 #| fig-cap: ROC (Receiver Operating Characteristic Curve) 
 load(here("results/roc_curve.rda"))
 (roc_curve)
 ```
 
-the area under the curve is almost 1
-why the curve look s like this? Balancing vs sensitivity is almost 1
+Finally, as evidenced in @fig-roc, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.
+
+The near-perfect balance between sensitivity and specificity implies that the model effectively balances between correctly identifying positive instances and minimizing false positives, making it highly reliable and suitable when classifying the loan status.
 
 ### Does the effort of building a predictive model really pay off?
 
