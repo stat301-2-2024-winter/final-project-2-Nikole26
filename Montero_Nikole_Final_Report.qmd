@@ -114,7 +114,7 @@ Parameters to be tuned:
 ##### 5. Boost Trees:
 It is an ensemble learning model that combines multiple weak learners (typically decision trees) to create a strong predictive model. It iteratively builds trees, focusing on the mistakes of the previous iterations.
 
-Parameters to be tuned over different values:
+Parameters to be tuned:
 
 * Number of trees: The number of trees to include in the boosting process.
 
