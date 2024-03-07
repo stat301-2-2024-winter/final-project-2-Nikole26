@@ -33,7 +33,6 @@ citation-location: margin
 #| echo: false
 library(tidyverse)
 library(here)
-library(yardstick)
 library(gt)
 library(gtExtras)
 ```
@@ -170,23 +169,29 @@ In @fig-results-recipe-2 it is seen that the model with worst performance is Nai
 
 ### Best parameters for each model
 
-The best performance of each model between the two recipes will be selected, and from them the best parameters will be determined for each.
+The best performance of each model between the two recipes will be selected, and from them the best parameters will be determined for each and analysed.
 
-####  Elastic Net
+#### 1. Elastic Net
 
-The best penalty parameter is 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. Thus, considering that the penalty is already at a very small value, further exploration might not be necessary. Besides, by adjusting the penalty slightly to see if it improves model performance could  sacrifice too much interpretability.
+The best penalty parameter is 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. Thus, considering that the penalty is already at a very small value, further exploration might not be necessary. Besides, by lowering the penalty more to see if it improves model performance could  sacrifice too much interpretability.
 
-####  K-Nearest Neighbors
+#### 2. K-Nearest Neighbors
 
-The best number of neighbors chosen for the KNN model is 5, which means that the model predicts the outcome based on the 5 nearest neighbors in the feature space. 
+The best number of neighbors for the KNN model is 5, compared when it is set to 10. This indicates that a lower value for neighbors which led to more localized decision boundaries and a better performance.
 
-####  Boosted Trees
+#### 3. Boosted Trees
 
-The number of variables randomly sampled at each split that performed best when building the trees is 11. The best minimum amount of observations required in a terminal node of the tree is 16. Finally,The best learning rate is 1.00 indicating full learning from each tree.
+The number of variables randomly sampled at each split (`mtry`) that performed best when building the trees is 11 compared when it is set to 10. This means that higher `mtry` value typically leads to more diverse trees, potentially capturing a wider range of features and increasing the model's ability to generalize.
 
-####  Random Forest
+The best minimum amount of observations (`min_n`) required in a terminal node of the tree is 16 compared to when it is set to 600. This indicates a lower `min_n` allows for more splits, potentially capturing finer details and nuances in the data. 
 
-The best number variables sampled at each split when growing trees in a Random Forest, it's set to 7. While, the minimum number of observations required in a terminal node of the tree that performed best is set to 5.
+Finally, both configurations have a best learning rate of 1.00, which means that the contribution of each tree in the boosting ensemble is not scaled. It would be recommend to explore higher learning rates can lead to faster convergence, while keeping in mind that it could also increase the risk of overfitting.
+
+#### 4. Random Forest
+
+The best number variables sampled at each split (`mtry`) when growing trees in a Random Forest, is 7 compared when it is set to 15. This means that a lower `mtry` value can lead to more diverse trees, potentially capturing a broader range of features that would improve the model performance.
+
+The minimum number of observations (`min_n`) required in a terminal node of the tree that performed best when is 5 compared when it is set to 27. This suggests that a lower `min_n` value allows for more splits, which serves to the advantage to the random forest model's performance. However, setting it too low might lead to overfitting.
 
 ### Recipes impact on methods' performances
 
@@ -214,7 +219,7 @@ To assess the Random Forest performance the following metrics were considered: c
   tab_spanner(
     label = "Truth",
     columns = c(CHGOFF, PIF)
-  ) |>
+    ) |>
   gt_add_divider(columns = "Prediction")
 ```
 

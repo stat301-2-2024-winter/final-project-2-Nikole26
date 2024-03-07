@@ -3312,22 +3312,25 @@ Github Repo Link
 <p>In <a href="#fig-results-recipe-2">Figure 4</a> it is seen that the model with worst performance is Naive Bayes with a mean 0.612 based on the accuracy as metric. While the best model performing is Random Forest with a mean of 0.994.</p>
 <section id="best-parameters-for-each-model" class="level3">
 <h3 class="anchored" data-anchor-id="best-parameters-for-each-model">Best parameters for each model</h3>
-<p>The best performance of each model between the two recipes will be selected, and from them the best parameters will be determined for each.</p>
+<p>The best performance of each model between the two recipes will be selected, and from them the best parameters will be determined for each and analysed.</p>
 <section id="elastic-net-1" class="level4">
-<h4 class="anchored" data-anchor-id="elastic-net-1">Elastic Net</h4>
-<p>The best penalty parameter is 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. Thus, considering that the penalty is already at a very small value, further exploration might not be necessary. Besides, by adjusting the penalty slightly to see if it improves model performance could sacrifice too much interpretability.</p>
+<h4 class="anchored" data-anchor-id="elastic-net-1">1. Elastic Net</h4>
+<p>The best penalty parameter is 0.0000000001, indicating that the model heavily penalizes the coefficients of the predictors. Thus, considering that the penalty is already at a very small value, further exploration might not be necessary. Besides, by lowering the penalty more to see if it improves model performance could sacrifice too much interpretability.</p>
 </section>
 <section id="k-nearest-neighbors" class="level4">
-<h4 class="anchored" data-anchor-id="k-nearest-neighbors">K-Nearest Neighbors</h4>
-<p>The best number of neighbors chosen for the KNN model is 5, which means that the model predicts the outcome based on the 5 nearest neighbors in the feature space.</p>
+<h4 class="anchored" data-anchor-id="k-nearest-neighbors">2. K-Nearest Neighbors</h4>
+<p>The best number of neighbors for the KNN model is 5, compared when it is set to 10. This indicates that a lower value for neighbors which led to more localized decision boundaries and a better performance.</p>
 </section>
 <section id="boosted-trees" class="level4">
-<h4 class="anchored" data-anchor-id="boosted-trees">Boosted Trees</h4>
-<p>The number of variables randomly sampled at each split that performed best when building the trees is 11. The best minimum amount of observations required in a terminal node of the tree is 16. Finally,The best learning rate is 1.00 indicating full learning from each tree.</p>
+<h4 class="anchored" data-anchor-id="boosted-trees">3. Boosted Trees</h4>
+<p>The number of variables randomly sampled at each split (<code>mtry</code>) that performed best when building the trees is 11 compared when it is set to 10. This means that higher <code>mtry</code> value typically leads to more diverse trees, potentially capturing a wider range of features and increasing the model’s ability to generalize.</p>
+<p>The best minimum amount of observations (<code>min_n</code>) required in a terminal node of the tree is 16 compared to when it is set to 600. This indicates a lower <code>min_n</code> allows for more splits, potentially capturing finer details and nuances in the data.</p>
+<p>Finally, both configurations have a best learning rate of 1.00, which means that the contribution of each tree in the boosting ensemble is not scaled. It would be recommend to explore higher learning rates can lead to faster convergence, while keeping in mind that it could also increase the risk of overfitting.</p>
 </section>
 <section id="random-forest-1" class="level4">
-<h4 class="anchored" data-anchor-id="random-forest-1">Random Forest</h4>
-<p>The best number variables sampled at each split when growing trees in a Random Forest, it’s set to 7. While, the minimum number of observations required in a terminal node of the tree that performed best is set to 5.</p>
+<h4 class="anchored" data-anchor-id="random-forest-1">4. Random Forest</h4>
+<p>The best number variables sampled at each split (<code>mtry</code>) when growing trees in a Random Forest, is 7 compared when it is set to 15. This means that a lower <code>mtry</code> value can lead to more diverse trees, potentially capturing a broader range of features that would improve the model performance.</p>
+<p>The minimum number of observations (<code>min_n</code>) required in a terminal node of the tree that performed best when is 5 compared when it is set to 27. This suggests that a lower <code>min_n</code> value allows for more splits, which serves to the advantage to the random forest model’s performance. However, setting it too low might lead to overfitting.</p>
 </section>
 </section>
 <section id="recipes-impact-on-methods-performances" class="level3">
@@ -3346,20 +3349,20 @@ Github Repo Link
 <div id="fig-table-confusion-matrix" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 
-<div id="ymqosoysgr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ymqosoysgr table {
+<div id="zrggntheac" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zrggntheac table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#ymqosoysgr thead, #ymqosoysgr tbody, #ymqosoysgr tfoot, #ymqosoysgr tr, #ymqosoysgr td, #ymqosoysgr th {
+#zrggntheac thead, #zrggntheac tbody, #zrggntheac tfoot, #zrggntheac tr, #zrggntheac td, #zrggntheac th {
 border-style: none;
 }
-#ymqosoysgr p {
+#zrggntheac p {
 margin: 0;
 padding: 0;
 }
-#ymqosoysgr .gt_table {
+#zrggntheac .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3384,11 +3387,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#ymqosoysgr .gt_caption {
+#zrggntheac .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#ymqosoysgr .gt_title {
+#zrggntheac .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3399,7 +3402,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#ymqosoysgr .gt_subtitle {
+#zrggntheac .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3410,7 +3413,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#ymqosoysgr .gt_heading {
+#zrggntheac .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3421,12 +3424,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ymqosoysgr .gt_bottom_border {
+#zrggntheac .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ymqosoysgr .gt_col_headings {
+#zrggntheac .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3440,7 +3443,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#ymqosoysgr .gt_col_heading {
+#zrggntheac .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3459,7 +3462,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#ymqosoysgr .gt_column_spanner_outer {
+#zrggntheac .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3470,13 +3473,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#ymqosoysgr .gt_column_spanner_outer:first-child {
+#zrggntheac .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#ymqosoysgr .gt_column_spanner_outer:last-child {
+#zrggntheac .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#ymqosoysgr .gt_column_spanner {
+#zrggntheac .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3487,10 +3490,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#ymqosoysgr .gt_spanner_row {
+#zrggntheac .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#ymqosoysgr .gt_group_heading {
+#zrggntheac .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3515,7 +3518,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#ymqosoysgr .gt_empty_group_heading {
+#zrggntheac .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3529,13 +3532,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#ymqosoysgr .gt_from_md > :first-child {
+#zrggntheac .gt_from_md > :first-child {
 margin-top: 0;
 }
-#ymqosoysgr .gt_from_md > :last-child {
+#zrggntheac .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#ymqosoysgr .gt_row {
+#zrggntheac .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3553,7 +3556,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#ymqosoysgr .gt_stub {
+#zrggntheac .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3565,7 +3568,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ymqosoysgr .gt_stub_row_group {
+#zrggntheac .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3578,13 +3581,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#ymqosoysgr .gt_row_group_first td {
+#zrggntheac .gt_row_group_first td {
 border-top-width: 2px;
 }
-#ymqosoysgr .gt_row_group_first th {
+#zrggntheac .gt_row_group_first th {
 border-top-width: 2px;
 }
-#ymqosoysgr .gt_summary_row {
+#zrggntheac .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3593,14 +3596,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ymqosoysgr .gt_first_summary_row {
+#zrggntheac .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#ymqosoysgr .gt_first_summary_row.thick {
+#zrggntheac .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#ymqosoysgr .gt_last_summary_row {
+#zrggntheac .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3609,7 +3612,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ymqosoysgr .gt_grand_summary_row {
+#zrggntheac .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3618,7 +3621,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ymqosoysgr .gt_first_grand_summary_row {
+#zrggntheac .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3627,7 +3630,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#ymqosoysgr .gt_last_grand_summary_row_top {
+#zrggntheac .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3636,10 +3639,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#ymqosoysgr .gt_striped {
+#zrggntheac .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#ymqosoysgr .gt_table_body {
+#zrggntheac .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3647,7 +3650,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#ymqosoysgr .gt_footnotes {
+#zrggntheac .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3660,7 +3663,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ymqosoysgr .gt_footnote {
+#zrggntheac .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -3668,7 +3671,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ymqosoysgr .gt_sourcenotes {
+#zrggntheac .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3681,57 +3684,57 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#ymqosoysgr .gt_sourcenote {
+#zrggntheac .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#ymqosoysgr .gt_left {
+#zrggntheac .gt_left {
 text-align: left;
 }
-#ymqosoysgr .gt_center {
+#zrggntheac .gt_center {
 text-align: center;
 }
-#ymqosoysgr .gt_right {
+#zrggntheac .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#ymqosoysgr .gt_font_normal {
+#zrggntheac .gt_font_normal {
 font-weight: normal;
 }
-#ymqosoysgr .gt_font_bold {
+#zrggntheac .gt_font_bold {
 font-weight: bold;
 }
-#ymqosoysgr .gt_font_italic {
+#zrggntheac .gt_font_italic {
 font-style: italic;
 }
-#ymqosoysgr .gt_super {
+#zrggntheac .gt_super {
 font-size: 65%;
 }
-#ymqosoysgr .gt_footnote_marks {
+#zrggntheac .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#ymqosoysgr .gt_asterisk {
+#zrggntheac .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#ymqosoysgr .gt_indent_1 {
+#zrggntheac .gt_indent_1 {
 text-indent: 5px;
 }
-#ymqosoysgr .gt_indent_2 {
+#zrggntheac .gt_indent_2 {
 text-indent: 10px;
 }
-#ymqosoysgr .gt_indent_3 {
+#zrggntheac .gt_indent_3 {
 text-indent: 15px;
 }
-#ymqosoysgr .gt_indent_4 {
+#zrggntheac .gt_indent_4 {
 text-indent: 20px;
 }
-#ymqosoysgr .gt_indent_5 {
+#zrggntheac .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
