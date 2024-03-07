@@ -42,7 +42,7 @@ library(gtExtras)
 
 The project objective is to develop a predictive model to determine the likelihood of small businesses or start-ups having their loan applications approved by the U.S. Small Business Administration (SBA). This predictive model focuses on classifying loan applications into two categories: "Approved" and "Rejected," utilizing the dependent variable loan status, which indicates if the loan is either "Charged Off" or "Paid in Full".
 
-The motivation behind this project stems from my deep curiosity in understanding the dynamics between financial institutions and emerging enterprises, particularly the challenges startups face in securing loans. As an economics undergraduate interested in applying data science skills and knowledge to real-world business scenarios, this aspect of investigating the relationship between banks and startups caught my attention. By delving into these interactions, this project provides a meaningful way for me to apply my data science expertise in economics.
+The motivation behind this project stems from my deep curiosity in understanding the dynamics between financial institutions and emerging enterprises, particularly the challenges start-ups face in securing loans. As an economics undergraduate interested in applying data science skills and knowledge to real-world business scenarios, this aspect of investigating the relationship between banks and start ups caught my attention. By delving into these interactions, this project provides a meaningful way for me to apply my data science expertise in economics.
 
 Predicting loan status is a vital aspect of risk assessment for financial institutions like the SBA. Accurately identifying loans at risk of default can lead to proactive risk management and mitigation strategies. Therefore, developing a robust predictive model can aid in streamlining loan approval processes, optimizing resource allocation, and ultimately reducing the likelihood of loan defaults.
 
@@ -74,7 +74,7 @@ mis_status_plot
 
 ### Downsampled data overview
 
-The downsampled dataset comprises 30,000 observations. It encompasses 27 variables capturing various attributes. Of these variables, 5 are character type, 3 are date type, 3 are factor type, and 16 are numeric type. There is some missingness accross the variables, the variable which the highest amount of missing values is the charge-off date, with about 50.3% of values missing. Nevertheless, the priority, the target variable have a completeness rate of 100%.
+The downsampled dataset comprises 30,000 observations. It encompasses 27 variables capturing various attributes. Of these variables, 5 are character type, 3 are date type, 3 are factor type, and 16 are numeric type. There is some missingness across the variables, the variable which the highest amount of missing values is the charge-off date, with about 50.3% of values missing. Nevertheless, the priority, the target variable have a completeness rate of 100%.
 
 ## Methods
 
@@ -256,7 +256,21 @@ Moreover, the practical implications of the chosen model's predictions are signi
 
 Hence, considering the context of loan application approval, the significant improvement in accuracy provided by the random forest model suggests that the effort invested in building it is likely justified.
 
-## Conclusion
+## Conclusions
 
-While Recipe 2 includes additional preprocessing steps, it does not lead to a substantial improvement in model performance compared to Recipe 1. The choice of model type appears to have a larger impact on performance, with ensemble-based models generally outperforming simpler models.
+Through this comprehensive data exploration, methodical model building, and rigorous evaluation, the following conclusions have been drawn:
 
+* Even though Recipe 2 included additional preprocessing steps compared to Recipe 1, such as handling correlated predictors and normalizing numeric predictors, the improvement in model performance was marginal. This suggests that the added complexity may not always translate into significantly better predictive performance.
+
+* While Recipe 2 included additional preprocessing steps, it did not lead to a substantial improvement in model performance compared to Recipe 1. Thus, the choice of model type appears to have a larger impact on performance, with ensemble-based models generally outperforming simpler models.
+
+*  Random Forest consistently emerged as the top-performing model, outperforming other models in terms of accuracy. Its ability to capture complex relationships in the data contributed to its superior predictive performance.
+
+* The Random Forest model's high accuracy and excellent discriminatory power would significant practical implications for loan approval decisions. Its ability to accurately classify loan applications as "Charged Off" or "Paid in Full" would minimize the risk of approving risky loans, while also ensuring that viable applicants are not unfairly rejected.
+
+Future work and next steps may involve exploring additional features or alternative modeling techniques to further enhance predictive performance. I would also suggest investigating the generalization of the best model, the random forest, across different geographical regions or loan types, since it could broaden its applicability and relevance in diverse contexts. Overall, this project lays a solid foundation for continued research and innovation in the area of loan approval prediction modeling.
+
+
+## References
+
+Toktogaraev, M. (2022). "Should This Loan be Approved or Denied? [Data set]. Kaggle. [https://www.kaggle.com/datasets/mirbektoktogaraev/should-this-loan-be-approved-or-denied?select=Should+This+Loan+be+Approved+or+Denied+A+Large+Dataset+with+Class+Assignment+Guidelines.pdf](https://www.kaggle.com/datasets/mirbektoktogaraev/should-this-loan-be-approved-or-denied?select=Should+This+Loan+be+Approved+or+Denied+A+Large+Dataset+with+Class+Assignment+Guidelines.pdf)
