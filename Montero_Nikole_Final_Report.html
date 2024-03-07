@@ -3013,6 +3013,9 @@ vertical-align: -.125em;
   </ul></li>
   <li><a href="#final-model-analysis" id="toc-final-model-analysis" class="nav-link" data-scroll-target="#final-model-analysis">Final Model Analysis</a>
   <ul class="collapse">
+  <li><a href="#confusion-matrix" id="toc-confusion-matrix" class="nav-link" data-scroll-target="#confusion-matrix">Confusion Matrix</a></li>
+  <li><a href="#accuracy" id="toc-accuracy" class="nav-link" data-scroll-target="#accuracy">Accuracy</a></li>
+  <li><a href="#receiver-operating-characteristic-roc-curve" id="toc-receiver-operating-characteristic-roc-curve" class="nav-link" data-scroll-target="#receiver-operating-characteristic-roc-curve">Receiver Operating Characteristic (ROC) Curve</a></li>
   <li><a href="#does-the-effort-of-building-a-predictive-model-really-pay-off" id="toc-does-the-effort-of-building-a-predictive-model-really-pay-off" class="nav-link" data-scroll-target="#does-the-effort-of-building-a-predictive-model-really-pay-off">Does the effort of building a predictive model really pay off?</a></li>
   </ul></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
@@ -3239,7 +3242,7 @@ Github Repo Link
 </tr>
 </tbody>
 </table>
-<figcaption class="figure-caption">Figure 3: Best Estimated Accuracy per model using Recipe 1</figcaption>
+<figcaption class="figure-caption">Figure 3: Best Estimated Accuracy per model using baseline recipe (Recipe 1)</figcaption>
 </figure>
 </div>
 </div>
@@ -3302,7 +3305,7 @@ Github Repo Link
 </tr>
 </tbody>
 </table>
-<figcaption class="figure-caption">Figure 4: Best Estimated Accuracy per model using Recipe 1</figcaption>
+<figcaption class="figure-caption">Figure 4: Best Estimated Accuracy per model using a more complex recipe (Recipe 2)</figcaption>
 </figure>
 </div>
 </div>
@@ -3337,24 +3340,26 @@ Github Repo Link
 <section id="final-model-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="final-model-analysis">Final Model Analysis</h2>
 <p>To assess the Random Forest performance the following metrics were considered: confusion matrix, accuracy and the receiver operating characteristic curve.</p>
+<section id="confusion-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="confusion-matrix">Confusion Matrix</h3>
 <div class="cell">
 <div id="fig-table-confusion-matrix" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 
-<div id="bhnwvvdqiz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bhnwvvdqiz table {
+<div id="ymqosoysgr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ymqosoysgr table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#bhnwvvdqiz thead, #bhnwvvdqiz tbody, #bhnwvvdqiz tfoot, #bhnwvvdqiz tr, #bhnwvvdqiz td, #bhnwvvdqiz th {
+#ymqosoysgr thead, #ymqosoysgr tbody, #ymqosoysgr tfoot, #ymqosoysgr tr, #ymqosoysgr td, #ymqosoysgr th {
 border-style: none;
 }
-#bhnwvvdqiz p {
+#ymqosoysgr p {
 margin: 0;
 padding: 0;
 }
-#bhnwvvdqiz .gt_table {
+#ymqosoysgr .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3379,11 +3384,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_caption {
+#ymqosoysgr .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#bhnwvvdqiz .gt_title {
+#ymqosoysgr .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3394,7 +3399,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#bhnwvvdqiz .gt_subtitle {
+#ymqosoysgr .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3405,7 +3410,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#bhnwvvdqiz .gt_heading {
+#ymqosoysgr .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3416,12 +3421,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_bottom_border {
+#ymqosoysgr .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_col_headings {
+#ymqosoysgr .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3435,7 +3440,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_col_heading {
+#ymqosoysgr .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3454,7 +3459,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#bhnwvvdqiz .gt_column_spanner_outer {
+#ymqosoysgr .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3465,13 +3470,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#bhnwvvdqiz .gt_column_spanner_outer:first-child {
+#ymqosoysgr .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#bhnwvvdqiz .gt_column_spanner_outer:last-child {
+#ymqosoysgr .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#bhnwvvdqiz .gt_column_spanner {
+#ymqosoysgr .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3482,10 +3487,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#bhnwvvdqiz .gt_spanner_row {
+#ymqosoysgr .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#bhnwvvdqiz .gt_group_heading {
+#ymqosoysgr .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3510,7 +3515,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#bhnwvvdqiz .gt_empty_group_heading {
+#ymqosoysgr .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3524,13 +3529,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#bhnwvvdqiz .gt_from_md > :first-child {
+#ymqosoysgr .gt_from_md > :first-child {
 margin-top: 0;
 }
-#bhnwvvdqiz .gt_from_md > :last-child {
+#ymqosoysgr .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#bhnwvvdqiz .gt_row {
+#ymqosoysgr .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3548,7 +3553,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#bhnwvvdqiz .gt_stub {
+#ymqosoysgr .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3560,7 +3565,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bhnwvvdqiz .gt_stub_row_group {
+#ymqosoysgr .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3573,13 +3578,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#bhnwvvdqiz .gt_row_group_first td {
+#ymqosoysgr .gt_row_group_first td {
 border-top-width: 2px;
 }
-#bhnwvvdqiz .gt_row_group_first th {
+#ymqosoysgr .gt_row_group_first th {
 border-top-width: 2px;
 }
-#bhnwvvdqiz .gt_summary_row {
+#ymqosoysgr .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3588,14 +3593,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bhnwvvdqiz .gt_first_summary_row {
+#ymqosoysgr .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_first_summary_row.thick {
+#ymqosoysgr .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#bhnwvvdqiz .gt_last_summary_row {
+#ymqosoysgr .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3604,7 +3609,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_grand_summary_row {
+#ymqosoysgr .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -3613,7 +3618,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bhnwvvdqiz .gt_first_grand_summary_row {
+#ymqosoysgr .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3622,7 +3627,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_last_grand_summary_row_top {
+#ymqosoysgr .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3631,10 +3636,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_striped {
+#ymqosoysgr .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#bhnwvvdqiz .gt_table_body {
+#ymqosoysgr .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3642,7 +3647,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_footnotes {
+#ymqosoysgr .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3655,7 +3660,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_footnote {
+#ymqosoysgr .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -3663,7 +3668,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bhnwvvdqiz .gt_sourcenotes {
+#ymqosoysgr .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -3676,57 +3681,57 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#bhnwvvdqiz .gt_sourcenote {
+#ymqosoysgr .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#bhnwvvdqiz .gt_left {
+#ymqosoysgr .gt_left {
 text-align: left;
 }
-#bhnwvvdqiz .gt_center {
+#ymqosoysgr .gt_center {
 text-align: center;
 }
-#bhnwvvdqiz .gt_right {
+#ymqosoysgr .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#bhnwvvdqiz .gt_font_normal {
+#ymqosoysgr .gt_font_normal {
 font-weight: normal;
 }
-#bhnwvvdqiz .gt_font_bold {
+#ymqosoysgr .gt_font_bold {
 font-weight: bold;
 }
-#bhnwvvdqiz .gt_font_italic {
+#ymqosoysgr .gt_font_italic {
 font-style: italic;
 }
-#bhnwvvdqiz .gt_super {
+#ymqosoysgr .gt_super {
 font-size: 65%;
 }
-#bhnwvvdqiz .gt_footnote_marks {
+#ymqosoysgr .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#bhnwvvdqiz .gt_asterisk {
+#ymqosoysgr .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#bhnwvvdqiz .gt_indent_1 {
+#ymqosoysgr .gt_indent_1 {
 text-indent: 5px;
 }
-#bhnwvvdqiz .gt_indent_2 {
+#ymqosoysgr .gt_indent_2 {
 text-indent: 10px;
 }
-#bhnwvvdqiz .gt_indent_3 {
+#ymqosoysgr .gt_indent_3 {
 text-indent: 15px;
 }
-#bhnwvvdqiz .gt_indent_4 {
+#ymqosoysgr .gt_indent_4 {
 text-indent: 20px;
 }
-#bhnwvvdqiz .gt_indent_5 {
+#ymqosoysgr .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
@@ -3761,12 +3766,27 @@ text-indent: 25px;
 </div>
 </div>
 <p>The values displayed in <a href="#fig-table-confusion-matrix">Figure 5</a> are interpreted as it follows:</p>
-<p>True Positives (TP): The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.</p>
-<p>False Negatives (FN): The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.</p>
-<p>False Positives (FP): The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.</p>
-<p>True Negatives (TN): The model correctly predicted 3,720 instances as “PIF” Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.</p>
+<ul>
+<li>True Positives (TP):</li>
+</ul>
+<p>The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.</p>
+<ul>
+<li>False Negatives (FN):</li>
+</ul>
+<p>The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.</p>
+<ul>
+<li>False Positives (FP):</li>
+</ul>
+<p>The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.</p>
+<ul>
+<li>True Negatives (TN):</li>
+</ul>
+<p>The model correctly predicted 3,720 instances as “PIF” Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.</p>
 <p>Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.</p>
-<p>In addition, as <a href="#fig-best-model-accuracy">Figure 6</a> shows the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.</p>
+</section>
+<section id="accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="accuracy">Accuracy</h3>
+<p><a href="#fig-best-model-accuracy">Figure 6</a> shows the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.</p>
 <div class="cell">
 <div id="fig-best-model-accuracy" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -3788,7 +3808,10 @@ text-indent: 25px;
 </figure>
 </div>
 </div>
-<p>Finally, as evidenced in <a href="#fig-roc">Figure 7</a>, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.</p>
+</section>
+<section id="receiver-operating-characteristic-roc-curve" class="level3">
+<h3 class="anchored" data-anchor-id="receiver-operating-characteristic-roc-curve">Receiver Operating Characteristic (ROC) Curve</h3>
+<p>As evidenced in <a href="#fig-roc">Figure 7</a>, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-roc" class="quarto-figure quarto-figure-center anchored">
@@ -3800,6 +3823,7 @@ text-indent: 25px;
 </div>
 </div>
 <p>The near-perfect balance between sensitivity and specificity implies that the model effectively balances between correctly identifying positive instances and minimizing false positives, making it highly reliable and suitable when classifying the loan status.</p>
+</section>
 <section id="does-the-effort-of-building-a-predictive-model-really-pay-off" class="level3">
 <h3 class="anchored" data-anchor-id="does-the-effort-of-building-a-predictive-model-really-pay-off">Does the effort of building a predictive model really pay off?</h3>
 <p>In the context of loan application approval, accuracy is crucial for making the right decisions about approving or rejecting applications. The random forest model’s higher accuracy (0.9949333) compared to the baseline logistic model (0.9879733) indicates a more precise prediction capability. This difference suggests that the random forest model can better differentiate between applicants who should be approved and those who shouldn’t, reducing the risk of approving risky loans while also minimizing the rejection of viable applicants.</p>

@@ -33,6 +33,8 @@ citation-location: margin
 #| echo: false
 library(tidyverse)
 library(here)
+library(gt)
+library(gtExtras)
 ```
 
 # Introduction
@@ -47,13 +49,86 @@ This project focus on a classification problem since the project aim to predict 
 
 ## Models Assesment
 
+The assessment of various models was conducted based on their accuracy performance using the baseline recipe (Recipe 1) and a more complex recipe (Recipe 2) methodology. The evaluation comprised 50 iterations for each model to ensure robustness and reliability of results, and the accuracy results per method and recipe can be seen in the following tables:
+
+```{r}
+#| label: fig-results-recipe-1
+#| fig-cap: Best Estimated Accuracy per model using baseline recipe (Recipe 1)
+load(here("results/model_results_1.rda"))
+model_results_1
+```
+
+```{r}
+#| label: fig-results-recipe-2
+#| fig-cap: Best Estimated Accuracy per model using a more complex recipe (Recipe 2)
+load(here("results/model_results_2.rda"))
+model_results_2
+```
+
+### Key findings per model
+
+#### 1. Naive Bayes:
+
+In both @fig-results-recipe-1 and @fig-results-recipe-2, Naive Bayes consistently exhibited the lowest performance with mean accuracies of 0.610 and 0.612, respectively.
+KNN (K-nearest neighbors):
+
+KNN demonstrated commendable performance across both assessments, maintaining mean accuracies above 0.90 in both @fig-results-recipe-1 and @fig-results-recipe-2.
+
+#### 2. Binary Logistic Regression:
+
+This model consistently achieved accuracies around 0.988, demonstrating reliability in classification tasks.
+
+#### 3. Elastic Net:
+
+Elastic Net showcased high accuracy levels, with mean scores close to 0.988 in both assessments, indicating stable performance.
+
+#### 4. Boost Tree:
+
+This model yielded mean accuracies exceeding 0.993 in @fig-results-recipe-1 and approximately 0.994 in @fig-results-recipe-2, highlighting its robustness.
+
+#### 5. Random Forest:
+
+Random Forest emerged as the top-performing model in both evaluations, with mean accuracies reaching 0.995 and 0.994 in @fig-results-recipe-1 and @fig-results-recipe-2, respectively.
+
+### Overall Assessment
+
+The comparison of models underscores the superiority of Random Forest in delivering consistently high accuracy across iterations. Its robust performance makes it a strong candidate for deployment in real-world applications. Conversely, Naive Bayes consistently trailed behind, suggesting limitations in its predictive capabilities compared to other models evaluated.
+
+## Best Model Assessment
+
+The assessment of the Random Forest model's performance involved comprehensive analysis utilizing various metrics including the confusion matrix, accuracy, and the receiver operating characteristic (ROC) curve.
+
+### Confusion Matrix
+
 ```{r}
 #| label: fig-table-confusion-matrix
 #| fig-cap: Confusion Matrix
-load(here("results/conf_mat.rda"))
-print(conf_mat$table)
+ tibble(
+  Prediction = c("CHGOFF", "PIF"), 
+  CHGOFF = c(3742, 30),
+  PIF = c(8, 3720)
+) |>
+  gt() |>
+  tab_spanner(
+    label = "Truth",
+    columns = c(CHGOFF, PIF)
+  ) |>
+  gt_add_divider(columns = "Prediction")
 ```
 
+Interpreting those values:
+
+* True Positives (TP): 3,742 instances correctly predicted as Charged Off.
+
+* False Negatives (FN): 30 instances incorrectly predicted as Paid In Full when they were actually Charged Off.
+
+* False Positives (FP): 8 instances incorrectly predicted as Charged Off when they were actually Paid In Full.
+
+* True Negatives (TN): 3,720 instances correctly predicted as Paid In Full.
+
+### Accuracy
+
+The accuracy of the Random Forest model is 0.9949333, indicating its exceptional performance in correctly predicting outcomes for approximately 99.49% of instances in the testing data.
 
 ```{r}
 #| label: fig-best-model-accuracy
@@ -62,6 +137,8 @@ load(here("results/acc_rf.rda"))
 acc_rf
 ```
 
+### Receiver Operating Characteristic (ROC) Curve
+
 ```{r}
 #| label: fig-table-roc
 #| fig-cap: ROC (Receiver Operating Characteristic Curve) 
@@ -69,8 +146,17 @@ load(here("results/roc_curve.rda"))
 roc_curve
 ```
 
-### Recipe Performance Comparison
+Main takeaways:
 
-## Best Model - Radom Forest
+* The area under the ROC curve (AUC) is close to 1, indicating excellent discriminatory power.
+
+* The model effectively balances sensitivity and specificity, making it highly reliable in classifying loan statuses as Charged Off or Paid in Full.
 
 # Opportunity for future research
+
+* Explore additional features and alternative modeling techniques to improve predictive performance.
+
+* Investigate the generalization of the best model, Random Forest, across different geographical regions or loan types to broaden its applicability.
+
+* Continue research and strategies in loan approval prediction modeling to refine existing methodologies and address evolving challenges and trends.
+

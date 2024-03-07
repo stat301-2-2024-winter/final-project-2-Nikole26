@@ -152,7 +152,7 @@ The models analysis and selection will be based on the accuracy of their perform
 
 ```{r}
 #| label: fig-results-recipe-1
-#| fig-cap: Best Estimated Accuracy per model using Recipe 1
+#| fig-cap: Best Estimated Accuracy per model using baseline recipe (Recipe 1)
 load(here("results/model_results_1.rda"))
 model_results_1
 ```
@@ -161,7 +161,7 @@ In @fig-results-recipe-1 it is seen that the model with worst performance is Nai
 
 ```{r}
 #| label: fig-results-recipe-2
-#| fig-cap: Best Estimated Accuracy per model using Recipe 1
+#| fig-cap: Best Estimated Accuracy per model using a more complex recipe (Recipe 2)
 load(here("results/model_results_2.rda"))
 model_results_2
 ```
@@ -200,6 +200,8 @@ Across both recipes, certain model types consistently perform better than others
 
 To assess the Random Forest performance the following metrics were considered: confusion matrix, accuracy and the receiver operating characteristic curve.
 
+### Confusion Matrix
+
 ```{r}
 #| label: fig-table-confusion-matrix
 #| fig-cap: Confusion Matrix
@@ -218,17 +220,27 @@ To assess the Random Forest performance the following metrics were considered: c
 
 The values displayed in @fig-table-confusion-matrix are interpreted as it follows:
 
-True Positives (TP): The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.
+* True Positives (TP): 
 
-False Negatives (FN): The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.
+The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.
 
-False Positives (FP): The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.
+* False Negatives (FN): 
 
-True Negatives (TN): The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
+The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.
+
+* False Positives (FP): 
+
+The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.
+
+* True Negatives (TN): 
+
+The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
 
 Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.
 
-In addition, as @fig-best-model-accuracy shows the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.
+### Accuracy
+
+@fig-best-model-accuracy shows the accuracy of the final model,the Random Forest model, is 0.9949333. This indicates that the model performed exceptionally well on the test dataset, meaning that it correctly predicted the outcome for approximately 99.49% of the instances in the test dataset.
 
 ```{r}
 #| label: fig-best-model-accuracy
@@ -237,7 +249,9 @@ load(here("results/acc_rf.rda"))
 acc_rf
 ```
 
-Finally, as evidenced in @fig-roc, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.
+### Receiver Operating Characteristic (ROC) Curve
+
+As evidenced in @fig-roc, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.
 
 ```{r}
 #| label: fig-roc
