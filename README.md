@@ -3,16 +3,18 @@
 This projects focus on developing a model that predicts the likelihood of small businesses or start-ups having their loan applications approved by the U.S. Small Business Administration (SBA)
 
 ## What is found in here?
-There are directories and R scripts and a misc of documents. 
+There are directories and a misc of documents. 
 
 ## Directories/folders
 `data/`: Contains the original data set and the cleaned dataset. 
-`memos/`: Contains the `Montero_Nikole_progress_memo_1.html`, which presents the project's goals, data source and upcoming steps. And `Montero_Nikole_progress_memo_1.qmd`, which contains the source code and narrative for the model workflows presented in the html.
-`plots/`: Contains plots created to analize the target variable.
+`data_splits/`: Contains the data splits, the training data, the testing data and the data folds.
+`memos/`: Contains the two memos which presents the project's progress at two different stages.
+`r_scripts/`: Contains the r.scripts used for the development of the project.
+`recipes/`: Contains the four recipes used in this project.
+`results/`: Contains the results obtained from the exploration and analysis of the different methods used in this project.
 
-## R scripts
-- `data_cleaning.R`: Shows the cleaning and data check of the dataset.
-- `mis_status.R`: Shows the exploration of the target variable `mis_status`.
-
-
-
+## Miscellaneous 
+`Montero_Nikole_Final_Report.qmd`: Contains the source code and narrative for the model workflows presented in the html. 
+`Montero_Nikole_Final_Report.html`: Present the project's final report of findings and insights. 
+`Montero_Nikole_Executive_Summary.qmd`: Contains the source code and narrative for the model workflows presented in the html. 
+`Montero_Nikole_Executive_Summary.html`: Present the project's executive summary of this final project. 
