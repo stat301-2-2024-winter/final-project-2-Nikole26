@@ -16,7 +16,7 @@ registerDoParallel(cores = num.cores)
 tidymodels_prefer()
 
 # loading neccesary data
-load(here("recipes/sba_recipe_baseline.rda"))
+load(here("recipes/sba_recipe_nb_1.rda"))
 load(here("results/keep_wflow.rda"))
 load(here("data_splits/sba_folds.rda"))
 
@@ -27,7 +27,7 @@ nb_mod <- naive_Bayes() |>
 
 nb_wflow <- workflow() |> 
   add_model(nb_mod) |> 
-  add_recipe(sba_recipe_baseline)
+  add_recipe(sba_recipe_nb_1)
 
 nb_fit_1 <-  
   fit_resamples(
