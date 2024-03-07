@@ -6,6 +6,8 @@ library(tidyverse)
 library(tidymodels)
 library(here)
 library(janitor)
+library(gt)
+library(gtExtras)
 
 # loading necessary data
 load(here("results/rf_tuned_1.rda"))
@@ -42,9 +44,28 @@ acc_rf <- accuracy(sba_results_rf, mis_status, .pred_class) |>
 save(acc_rf, file = here("results/acc_rf.rda"))
 
 # Confusion Matrix-----
-conf_mat <- conf_mat(sba_results_rf, mis_status, .pred_class)
+conf_mat <- tidy(conf_mat(sba_results_rf, mis_status, .pred_class))
+
+#conf_mat_1 <- as.tibble(matrix(c(3742, 8, 30, 3720), nrow = , byrow = TRUE,
+#                   dimnames = list(Prediction = c("CHGOFF", "PIF"),
+#                                   Truth = c("CHGOFF", "PIF"))))
+  
+#conf_mat_1 <-
+  tibble(
+  Prediction = c("CHGOFF", "PIF"), 
+  CHGOFF = c(3742, 30),
+  PIF = c(8, 3720)
+) |>
+  gt() |>
+  tab_spanner(
+    label = "Truth",
+    columns = c(CHGOFF, PIF)
+  ) |>
+  gt_add_divider(columns = "Prediction")
+
 
 save(conf_mat, file = here("results/conf_mat.rda"))
+#saveRDS(conf_mat_1, file = here("results/conf_mat_1.rds"))
 
 # Predictions to create roc_auc-----------
 loan_results <- predict(final_fit_roc, new_data = sba_test_tidy) |>

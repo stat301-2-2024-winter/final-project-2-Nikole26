@@ -43,9 +43,33 @@ The project objective is to develop a predictive model to determine the likeliho
 
 ## Type of prediction problem
 
+This project focus on a classification problem since the project aim to predict whether the loan is Charged Off or Paid in Full.
+
 ## Models Assesment
 
-### Recipe Performance
+```{r}
+#| label: fig-table-confusion-matrix
+#| fig-cap: Confusion Matrix
+load(here("results/conf_mat.rda"))
+print(conf_mat$table)
+```
+
+
+```{r}
+#| label: fig-best-model-accuracy
+#| fig-cap: Best Model Accuracy
+load(here("results/acc_rf.rda"))
+acc_rf
+```
+
+```{r}
+#| label: fig-table-roc
+#| fig-cap: ROC (Receiver Operating Characteristic Curve) 
+load(here("results/roc_curve.rda"))
+roc_curve
+```
+
+### Recipe Performance Comparison
 
 ## Best Model - Radom Forest
 

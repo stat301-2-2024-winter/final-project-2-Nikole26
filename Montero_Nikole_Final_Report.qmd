@@ -34,6 +34,8 @@ citation-location: margin
 library(tidyverse)
 library(here)
 library(yardstick)
+library(gt)
+library(gtExtras)
 ```
 
 ## Introduction
@@ -201,18 +203,28 @@ To assess the Random Forest performance the following metrics were considered: c
 ```{r}
 #| label: fig-table-confusion-matrix
 #| fig-cap: Confusion Matrix
-load(here("results/conf_mat.rda"))
-print(conf_mat$table)
+ tibble(
+  Prediction = c("CHGOFF", "PIF"), 
+  CHGOFF = c(3742, 30),
+  PIF = c(8, 3720)
+) |>
+  gt() |>
+  tab_spanner(
+    label = "Truth",
+    columns = c(CHGOFF, PIF)
+  ) |>
+  gt_add_divider(columns = "Prediction")
 ```
+
 The values displayed in @fig-table-confusion-matrix are interpreted as it follows:
 
-True Positives: The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.
+True Positives (TP): The model correctly predicted 3,742 instances as Charged Off (CHGOFF). These are the instances where the model predicted that the loans would be charged off, and they were indeed charged off.
 
-False Negatives: The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.
+False Negatives (FN): The model incorrectly predicted 30 instances as Paid In Full (PIF) when they were actually Charged Off (CHGOFF). These are the instances where the model failed to predict that the loans would be charged off when they actually were.
 
-False Positives: The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.
+False Positives (FP): The model incorrectly predicted 8 instances as Charged Off (CHGOFF) when they were actually Paid In Full (PIF). These are the instances where the model predicted that the loans would be charged off, but they were actually paid in full.
 
-True Negatives: The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
+True Negatives (TN): The model correctly predicted 3,720 instances as "PIF" Paid In Full (PIF). These are the instances where the model predicted that the loans would be paid in full, and they were indeed paid in full.
 
 Overall, based on this confusion matrix, the random forest model demonstrates high accuracy, precision, and recall, indicating strong performance in predicting both Charged Off and Paid In Full classes.
 
@@ -225,14 +237,14 @@ load(here("results/acc_rf.rda"))
 acc_rf
 ```
 
+Finally, as evidenced in @fig-roc, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.
+
 ```{r}
 #| label: fig-roc
 #| fig-cap: ROC (Receiver Operating Characteristic Curve) 
 load(here("results/roc_curve.rda"))
 (roc_curve)
 ```
-
-Finally, as evidenced in @fig-roc, the area under the ROC curve (AUC) is close to 1. This indicates that the model has excellent discriminatory power, meaning it can effectively distinguish between the two classes, in this case, Charged Off and Paid in Full.
 
 The near-perfect balance between sensitivity and specificity implies that the model effectively balances between correctly identifying positive instances and minimizing false positives, making it highly reliable and suitable when classifying the loan status.
 
@@ -247,3 +259,4 @@ Hence, considering the context of loan application approval, the significant imp
 ## Conclusion
 
 While Recipe 2 includes additional preprocessing steps, it does not lead to a substantial improvement in model performance compared to Recipe 1. The choice of model type appears to have a larger impact on performance, with ensemble-based models generally outperforming simpler models.
+
